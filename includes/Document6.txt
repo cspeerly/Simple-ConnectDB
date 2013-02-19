@@ -1,0 +1,3 @@
+<?php
+echo 'You Do Not Have Rights to This Function";
+?>
