@@ -13,15 +13,7 @@ Installation:
 
 This is a SIMPLE and fast way to put your mySQL database on line.
 
-1) Edit the db_Config.php in the includes folder.
-   The directions are explained for each setting in the doc.php file.
-   
-2) Copy the complete application folder to the root of your web site.
-
-3) Browse to http://localhost/Simple-Connect/index.php
-
-IF all is set correctly you will see your your data.
-You can edit the display to you needs, but that is on you.
+Read the Documentation here: http://http://cspeerly.github.com/Simple-ConnectDB
 
 
 Distributed under the MIT-Style License. See `LICENSE.txt` file for more information.
