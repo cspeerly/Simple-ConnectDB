@@ -1,0 +1,17 @@
+<div style="max-width:700px;">
+	<h2>This is Ajax/h2>
+	<p>
+		<a href="javascript:jQuery.fancybox.close();">Close me</a>
+	</p>
+<p>
+	Footer
+	</p>
+
+
+
+</div>
+<div>
+	<p>
+	Footer
+	</p>
+</div>
