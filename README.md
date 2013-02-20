@@ -29,13 +29,13 @@ Distributed under the MIT-Style License. See `LICENSE.txt` file for more informa
 There are Added scripts and files from other sorces
 
  * TableSorter (http://mottie.github.com/tablesorter/docs/index.html)
-   SEE there site license for your use.
+   SEE their site license for your use.
  
  * Meekrodb (http://meekrodb.com)
-   SEE there site license for your use.
+   SEE their site license for your use.
    
  * fancyBox v2.1.4 (http://http://fancyapps.com/fancybox/#license)
-   SEE there site license for your use.
+   SEE their site license for your use.
  
  * BootStrap
  
