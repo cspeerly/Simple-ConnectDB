@@ -287,9 +287,6 @@ if ($db_Pager == 1){
 		Page: <select class="gotoPage"></select>
 		<?php
 		if ($dbCanAdd == 1)  echo "<a id='fancybox-add' class='btn btn-mini' type='button' href='db_Add.php'> ".$txtAddNew."</a>";
-		if ($db_Setup == 1)  echo "<a class='btn btn-mini' type='button' href='Doc.php' target='_blank'> ".$txtDoc."</a>";
-
-
 		?>
 	</form>
 </div>

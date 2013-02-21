@@ -163,7 +163,4 @@ $ImageUpload[19] = "uploads/";
 // Show Field as a image
 $db_ImageFieldName = "IMGPhoto";
 
-$db_Setup = 1;
-
-
 ?>
