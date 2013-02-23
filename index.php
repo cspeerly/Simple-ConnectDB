@@ -23,10 +23,8 @@ require_once 'includes/db_Functions.php';
 	<link rel="stylesheet" type="text/css" href="assets/fancybox/source/jquery.fancybox.css?v=2.1.4" media="screen" />
 	<script type="text/javascript" src="assets/fancybox/source/jquery.fancybox.js?v=2.1.4"></script>
 
-
 <!-- momentjs -->
 <script src="assets/momentjs/moment.min.js"></script>
-
 
 <!-- bootstrap -->
  	<link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -405,12 +403,99 @@ if (empty($Filter))$Filter = '';
 				?>
 				placement: '<?php echo $placement ?>',
 				<?php
-				if ($FieldType[$i] == 'combodate' || $FieldType[$i] == 'date'){
-				?>
-				format: 'YYYY-MM-DD',
-				<?php
-				}
 
+
+				if ($FieldType[$i] == 'combodate'){
+					if (!empty($DateType[$i]) && $DateType[$i] == 'combodate'){
+
+						if (!empty($DateFormat[$i])){
+						?>
+						format: '<?php echo $DateFormat[$i] ?>',
+						<?php
+						} // End if DateFormat
+
+						if (!empty($ComboDateTemplate[$i])){
+						?>
+							template: '<?php echo $ComboDateTemplate[$i] ?>',
+						 <?php
+						 } // End if DateComdoTemplate
+						 ?>
+							combodate: {
+							firstItem: 'name',
+							<?php
+							if (!empty($ComboDateMinYear[$i])){
+							?>
+								minYear: '<?php echo $ComboDateMinYear[$i] ?>',
+							<?php
+							} // End minYear
+
+							if (!empty($ComboDateMaxYear[$i])){
+							?>
+								maxYear: '<?php echo $ComboDateMaxYear[$i] ?>',
+							<?php
+							} // End maxYear
+
+							if (!empty($ComboTimeMinuteStep[$i])){
+							?>
+								minuteStep: <?php echo $ComboTimeMinuteStep[$i] ?>,
+							<?php
+							} // End if TimeComboMinuteStep
+							?>
+						},
+				<?php
+					} // End DateType = combodate
+				} // End FieldType combodate
+
+				if ($FieldType[$i] == 'date'){
+					if (!empty($DateType[$i]) && $DateType[$i] == 'date'){
+
+					if (!empty($DateFormat[$i])){
+					?>
+					format: '<?php echo $DateFormat[$i] ?>',
+						<?php
+					} // End if DateFormat
+					?>
+						    datepicker: {
+						    <?php
+						    if (!empty($DateWeekStart[$i])){
+						    ?>
+					        weekStart: <?php echo $DateWeekStart[$i] ?>,
+					        <?php
+					        }
+
+
+
+						    if (!empty($DateStartDate[$i])){
+						    ?>
+					        startDate: '<?php echo $DateStartDate[$i] ?>',
+					        <?php
+					        }
+
+						    if (!empty($DateEndDate[$i])){
+						    ?>
+					        endDate: '<?php echo$DateEndDate[$i] ?>',
+					        <?php
+					        }
+
+						    if (!empty($DateWeekDaysDisabled[$i])){
+						    ?>
+					        daysOfWeekDisabled: [<?php echo $DateWeekDaysDisabled[$i] ?>],
+					        <?php
+					        }
+
+						    if (!empty($DateStartView[$i])){
+						    ?>
+					        :startView: [<?php echo $DateStartView[$i] ?>],
+					        <?php
+					        }
+					        ?>
+							todayBtn: false,
+							clear: true,
+					    },
+
+					<?php
+					} // End DateType = date
+				} // End if FieldType date
 				if(!empty($arrSelect2[$i])){
 				?>
 				select2: {
@@ -473,6 +558,7 @@ if (empty($Filter))$Filter = '';
 				}
 				?>
 			});
+
 
 			</script>
 			<?php

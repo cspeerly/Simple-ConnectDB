@@ -247,80 +247,186 @@ echo"<script>";
 					if (substr($strDisplayViewEdit,$i,1) == '2')$mode='inline';
 					?>
 $('#<?php echo $columns[$i]?>').editable({
-			mode: '<?php echo $mode ?>',
-			type: '<?php if(!empty($FieldType[$i])){echo $FieldType[$i];}else{echo 'text';} ?>',
-			pk: <?php echo $record[$arrFieldNames[0]] ?>,
-			url: 'post.php',
-			name:'<?php echo $arrFieldNames[$i] ?>',
-			value: '<?php echo $record[$arrFieldNames[$i]] ?>',
-			<?php
-			if(!empty($FieldType[$i]) && $FieldType[$i] == 'checklist'){
-			}
-			if(!empty($FieldType[$i]) && $FieldType[$i] == 'password'){
-			}
-			if(empty($FieldType[$i]) || empty($FieldType[$i])){
-			}
-			?>
-			title: 'Enter <?php echo $columns[$i]?>',
-			<?php
-			if(!empty($arrSelect[$i])){
-			?>
-			source: "<?php echo $arrSelect[$i] ?>",
-			<?php
-			}
-			if(!empty($arrSelectgroups[$i])){
-			?>
-			source: "<?php echo $arrSelectgroups[$i] ?>",
-			<?php
-			}
-			if(!empty($arrSelect2[$i])){
-			?>
-    				select2: {
-						tags: <?php echo $arrSelect2[$i] ?>,
-						<?php
-						if(!empty($AutoTokenSeparators2[$i])){
-						?>
-						tokenSeparators: <?php echo $AutoTokenSeparators2[$i] ?>,
-						<?php
-						}
-						if(!empty($MaxSelectionSize2[$i])){
-						?>
-						maximumSelectionSize: <?php echo $MaxSelectionSize2[$i] ?>,
-						<?php
-						}
-						if(!empty($MinInputLength2[$i])){
-						?>
-						minimumInputLength: <?php echo $MinInputLength2[$i] ?>,
-						<?php
-						}
-						if(!empty($MaxInputLength2[$i])){
-						?>
-						maximumInputLength: <?php echo $MaxInputLength2[$i] ?>,
-						<?php
-						}
-						if(!empty($CustomMatcher2[$i])){
-						?>
-						matcher: function(term, text) { return text.toUpperCase().indexOf(term.toUpperCase())==0; },
-						<?php
-						}
-						?>
-						},
+				mode: '<?php echo $mode ?>',
+				type: '<?php echo $FieldType[$i] ?>',
+				pk: <?php echo $record[$arrFieldNames[0]] ?>,
+				url: 'post.php',
+				name:'<?php echo $arrFieldNames[$i] ?>',
+				value: '<?php echo $record[$arrFieldNames[$i]] ?>',
+				<?php
+				if ($FieldType[$i] == 'textarea'){
+				?>
+				rows: <?php echo $TextareaRows[$i] ?>,
+				<?php
+				}
+				if (!empty($strPopupPlacement)){
 
-			<?php
-			}
-			if (substr($strRequired,$i,1) == 1){
+					if (substr($strPopupPlacement,$i,1) == 0)$placement = "top";
+					if (substr($strPopupPlacement,$i,1) == 1)$placement = "right";
+					if (substr($strPopupPlacement,$i,1) == 2)$placement = "bottom";
+					if (substr($strPopupPlacement,$i,1) == 3)$placement = "left";
+				}
+				if (empty($placement))$placement = "top";
+				?>
+				placement: '<?php echo $placement ?>',
+				<?php
+				if ($FieldType[$i] == 'combodate'){
+					if (!empty($DateType[$i]) && $DateType[$i] == 'combodate'){
+
+						if (!empty($DateFormat[$i])){
+						?>
+						format: '<?php echo $DateFormat[$i] ?>',
+						<?php
+						} // End if DateFormat
+
+						if (!empty($ComboDateTemplate[$i])){
+						?>
+							template: '<?php echo $ComboDateTemplate[$i] ?>',
+						 <?php
+						 } // End if DateComdoTemplate
+						 ?>
+							combodate: {
+							firstItem: 'name',
+							<?php
+							if (!empty($ComboDateMinYear[$i])){
+							?>
+								minYear: '<?php echo $ComboDateMinYear[$i] ?>',
+							<?php
+							} // End minYear
+
+							if (!empty($ComboDateMaxYear[$i])){
+							?>
+								maxYear: '<?php echo $ComboDateMaxYear[$i] ?>',
+							<?php
+							} // End maxYear
+
+							if (!empty($ComboTimeMinuteStep[$i])){
+							?>
+								minuteStep: <?php echo $ComboTimeMinuteStep[$i] ?>,
+							<?php
+							} // End if TimeComboMinuteStep
+							?>
+						},
+				<?php
+					} // End DateType = combodate
+				} // End FieldType combodate
+
+				if ($FieldType[$i] == 'date'){
+					if (!empty($DateType[$i]) && $DateType[$i] == 'date'){
+
+					if (!empty($DateFormat[$i])){
+					?>
+					format: '<?php echo $DateFormat[$i] ?>',
+						<?php
+					} // End if DateFormat
+					?>
+						    datepicker: {
+						    <?php
+						    if (!empty($DateWeekStart[$i])){
+						    ?>
+					        weekStart: <?php echo $DateWeekStart[$i] ?>,
+					        <?php
+					        }
+
+
+
+						    if (!empty($DateStartDate[$i])){
+						    ?>
+					        startDate: '<?php echo $DateStartDate[$i] ?>',
+					        <?php
+					        }
+
+						    if (!empty($DateEndDate[$i])){
+						    ?>
+					        endDate: '<?php echo$DateEndDate[$i] ?>',
+					        <?php
+					        }
+
+						    if (!empty($DateWeekDaysDisabled[$i])){
+						    ?>
+					        daysOfWeekDisabled: [<?php echo $DateWeekDaysDisabled[$i] ?>],
+					        <?php
+					        }
+
+						    if (!empty($DateStartView[$i])){
+						    ?>
+					        :startView: [<?php echo $DateStartView[$i] ?>],
+					        <?php
+					        }
+					        ?>
+							todayBtn: false,
+							clear: true,
+					    },
+
+					<?php
+					} // End DateType = date
+				} // End if FieldType date
+				if(!empty($arrSelect2[$i])){
 			?>
-			validate: function(value) {
-			if($.trim(value) == '') return 'This field is required';
-			}
-			<?php
-			}
-			?>
+				select2: {
+					tags: <?php echo $arrSelect2[$i] ?>,
+					<?php
+					if(!empty($AutoTokenSeparators2[$i])){
+					?>
+					tokenSeparators: <?php echo $AutoTokenSeparators2[$i] ?>,
+					<?php
+					}
+					if(!empty($MaxSelectionSize2[$i])){
+					?>
+					maximumSelectionSize: <?php echo $MaxSelectionSize2[$i] ?>,
+					<?php
+					}
+					if(!empty($MinInputLength2[$i])){
+					?>
+					minimumInputLength: <?php echo $MinInputLength2[$i] ?>,
+					<?php
+					}
+					if(!empty($MaxInputLength2[$i])){
+					?>
+					maximumInputLength: <?php echo $MaxInputLength2[$i] ?>,
+					<?php
+					}
+					if(!empty($CustomMatcher2[$i])){
+					?>
+					matcher: function(term, text) { return text.toUpperCase().indexOf(term.toUpperCase())==0; },
+					<?php
+					}
+					?>
+					},
+					<?php
+					}
+					if(!empty($FieldType[$i]) && $FieldType[$i] == 'checklist'){
+					}
+					if(!empty($FieldType[$i]) && $FieldType[$i] == 'password'){
+					}
+					if(empty($FieldType[$i]) || empty($FieldType[$i])){
+					}
+					?>
+					title: 'Enter <?php echo $arrFieldNames[$i] ?>',
+					<?php
+					if(!empty($arrSelect[$i])){
+					?>
+					source: "<?php echo $arrSelect[$i] ?>",
+					<?php
+					}
+					if(!empty($arrSelectgroups[$i])){
+					?>
+					source: "<?php echo $arrSelectgroups[$i] ?>",
+					<?php
+					}
+					if (substr($strRequired,$i,1) == 1){
+					?>
+					validate: function(value) {
+					if($.trim(value) == '') return 'This field is required';
+					}
+				<?php
+				}
+				?>
 			});
 <?php
 }
 }
-//	}
+
 echo"</script>";
 }
 else

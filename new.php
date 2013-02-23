@@ -21,18 +21,13 @@ for ($i=0; $i<=$intFieldCount-1; $i++) {
 	else
 	{
 	   if ($field_type[$i] == 7){
-	   		$Insert[$i] = $_SESSION['date'] ;
+	   		$Insert[$i] = null ;
 	    }
 	 else
 	    {
 			$Insert[$i] = '';
 		}
 	}
-
-// check if field type is checkkist and see if it needs to be unserialized
-if(!empty($FieldType[$i]) && $FieldType[$i] == 'checklist' || !empty($FieldType[$i]) && $FieldType[$i] == 'select2'){
-		$Insert[$i] = serialize($Insert[$i]);
-}
 
 if (!empty($Insert[$i])){
 	$Fields .= $field_name[$i] . ",";
@@ -48,8 +43,9 @@ echo "Fields = " . $Fields . "<br>";
 echo "Values  = " . $Values  . "<br>";
 
 
-$sql = "insert into customers ($Fields) values($Values)";
+$sql = "insert into ".$db_Table." ($Fields) values($Values)";
 echo "sql  = " . $sql  . "<br>";
+
 
 $result = @mysql_query($sql);
 if ($result){

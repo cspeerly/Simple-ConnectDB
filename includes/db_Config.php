@@ -5,8 +5,8 @@
 
 //****** CUSTOMERS ***************************
 // Database Connection
-$db_user = 'root';
-$db_password = 'muffin';
+$db_user = 'user';
+$db_password = 'password';
 $db_Name = 'a1-sales';
 $db_Table = 'customers';
 $db_port = '3307';   // Change to match the port # for your mySQL
@@ -26,7 +26,7 @@ $appTheme = 'blue';  // blue,green,bootstrap,dropbox,dark,ice,black-ice,default,
 $db_WidgetOptions = "'filter','resizable'";
 
 // Defined Field Names
-$strFieldNames  = "ID,COMPANY,FIRSTNAME,LASTNAME,ADDRESS1,ADDRESS2,CITY,STATE,ZIP,PHONE,EMAIL,PASSWORD,SALESREP,ENTERED,MEMO,LIMIT,LEVEL,COLOR,STATUS,IMGPhoto,Languages";
+$strFieldNames  = "ID,COMPANY,FIRSTNAME,LASTNAME,ADDRESS1,ADDRESS2,CITY,STATE,ZIP,PHONE,EMAIL,PASSWORD,SALESREP,ENTERED,MEMO,LIMIT,LEVEL,COLOR,STATUS,IMGPhoto,Languages,Date,Time,Year,DateTime,TimeStamp,Notes";
 
 // Field Types
 // defines the field type in db_edit.php and db_add.php
@@ -45,7 +45,7 @@ $strFieldNames  = "ID,COMPANY,FIRSTNAME,LASTNAME,ADDRESS1,ADDRESS2,CITY,STATE,ZI
 //				typeahead, 	****
 //				wysihtml5.	***
 //				select2    	---  Does not work rith ir set to id shows s ref test box, if set to value shows dropdown but no options
-$strFieldType  	= 'text,select,text,text,text,text,text,select,select,text,email,password,select,date,wysihtml5,text,select,checklist,select,text,select2';
+$strFieldType  	= 'text,select,text,text,text,text,text,select,select,text,email,password,select,combodate,wysihtml5,text,select,checklist,select,text,select2,date,combodate,combodate,combodate,combodate,textarea';
 
 // Order by
 $db_OrderBy = "CompanyName";
@@ -70,35 +70,37 @@ $dbCanDelete = 1;
 // 2 = Show on Table List as the Link to Child Row
 // 3 = Show on Child Row only
 // 4 = Show on Table List and Child Row
-//                       012345678901234567890
-$strDisplayList =       "214430333330143331031";
+//                       012345678901234567890123456
+$strDisplayList =       "214430333330343330030111110";
 
 // Display View
-$strDisplayView  =      "111111111111111111111";
+$strDisplayView  =      "111111111111111111111111111";
 
 // Display VIEW/EDIT
-$strDisplayViewEdit =   "322222233322002222222";
+//                       012345678901234567890123456
+$strDisplayViewEdit =   "322222222222221222222222222";
 
 // Display ADD
-$strDisplayAdd =        "022222222222222222222";
+$strDisplayAdd =        "022222222222222222222222222";
 
 // Inline Edit
 // 0=no edit, 1=popup edit and 2=inline edit
-$strDisplayInlineEdit = "011112222222222222222";
-$strPopupPlacement    = "012340000000000000003";
+//                       012345678901234567890123456
+$strDisplayInlineEdit = "011112222222212222222122112";
+$strPopupPlacement    = "011200000000020000033200330";
 
 //Sortable
-$strSortable =          "111101111000110111100";
+$strSortable =          "111101111000110111100111110";
 
 // Resizable
-$strResizable =         "100101111001001000001";
+$strResizable =         "100101111001001000001111110";
 
 //Required
-$strRequired =          "011100000000000000000";
+$strRequired =          "011100000000000000000000000";
 
 //Filter
-$strFilter =            "111100000000000100100";
-$strFilterSelect =      "011100000000000100100";
+$strFilter =            "111100000000000100100111110";
+$strFilterSelect =      "011100000000000100100111110";
 $db_HideFilter = 'true';
 
 // Pager
@@ -107,6 +109,8 @@ $db_Pager = 0;
 $db_PageSelector = "5,10,15,20,50,100,ALL";
 $db_PageSize = 5;
 $db_StartPage = 0;
+
+$TextareaRows[26] = 2;
 
 // Child Row Header
 $ChildRowHeader = 'Child Header';
@@ -151,16 +155,62 @@ $arrSelect2[20] = "['html', 'javascript', 'css', 'ajax', 'php', 'asp', 'c++']";
 //$AutoTokenSeparators2[20] = '[",", " "]';
 $CustomMatcher2[20] = 'yes';
 
-
-
-
 $TextareaRows[2] = 2;
 
 $ImageUpload[19] = "uploads/";
 
-
-
 // Show Field as a image
 $db_ImageFieldName = "IMGPhoto";
+
+// COMBODATE FIELD TYPE
+$DateType[13] = "combodate";
+$DateFormat[13] = "YYYY-MM-DD";
+
+$ComboDateTemplate[13] = "YYYY/MMMM/DD";
+$ComboDateMinYear[13] = '2010';
+$ComboDateMaxYear[13] = '2015';
+
+
+// DATE FIELD TYPE
+$DateType[21] = "date";
+$DateFormat[21] = "yyyy-mm-dd";
+$DateWeekStart[21] = 0;
+$DateStartDate[21] = '2013-01-01';
+$DateEndDate[21] = '2015-12-31';
+$DateWeekDaysDisabled[21] = '0,6';
+$DateStartView[21] = 0;
+
+// COMBODATE TIME ONLY
+$DateType[22] = "combodate";
+$DateFormat[22] = "HH:mm";
+$ComboDateTemplate[22] = "hh:mm a";
+$ComboTimeMinuteStep[22] = 15;
+
+
+// COMBODATE YEAR ONLY
+$DateType[23] = "combodate";
+$DateFormat[23] = "YYYY";
+$ComboDateTemplate[23] = "YYYY";
+$ComboDateMinYear[23] = '2010';
+$ComboDateMaxYear[23] = '2015';
+
+
+// COMBODATE DATETIME
+$DateType[24] = "combodate";
+$DateFormat[24] = "YYYY-MM-DD HH:mm";
+$ComboDateTemplate[24] = "YYYY/MMMM/DD hh:mm a";
+$ComboDateMinYear[24] = '2010';
+$ComboDateMaxYear[24] = '2015';
+$ComboTimeMinuteStep[24] = 15;
+
+
+// DATE FIELD TYPE
+$DateType[25] = "combodate";
+$DateFormat[25] = "YYYY-MM-DD HH:mm";
+$ComboDateTemplate[25] = "YYYY/MMMM/DD hh:mm a";
+$ComboDateMinYear[25] = '2010';
+$ComboDateMaxYear[25] = '2015';
+$ComboTimeMinuteStep[25] = 15;
+
 
 ?>
