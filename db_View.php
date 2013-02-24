@@ -94,7 +94,7 @@ echo "<table width='500pk'>";
 
 
 
-				if(!empty($FieldType[$i]) && $FieldType[$i] == 'checklist'){
+				if(!empty($FieldType[$i]) && $FieldType[$i] == 'checklist' || $FieldType[$i] == 'select2'){
 					$data = @unserialize($record[$arrFieldNames[$i]]);
 					if($data !== false || $record[$arrFieldNames[$i]] === 'b:0;'){
 						//echo $x . " ok" . "<br>";
@@ -111,17 +111,10 @@ echo "<table width='500pk'>";
 
 					}
 
-					if ($arrFieldNames[$i] == $db_ImageFieldName){
+					if ($arrFieldNames[$i] == $ImageFieldName){
 						if ($record[$arrFieldNames[$i]] == '')$record[$arrFieldNames[$i]] = 'includes/images/Pic-NA.png';
 						$record[$arrFieldNames[$i]]='<img class="displayed" src="'.$record[$arrFieldNames[$i]].'" width="50">';
 					}
-
-
-
-
-
-
-
 
 
 					echo "<tr><td class='fieldname'>". $arrFieldNames[$i] . ":</td><td class='fieldvalue'>" . $record[$arrFieldNames[$i]] . "</td></tr>";

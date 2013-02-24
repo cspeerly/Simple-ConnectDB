@@ -62,43 +62,43 @@ require_once 'includes/db_Functions.php';
 </head>
 
 <script type="text/javascript">
-$(document).ready(function () {
+	$(document).ready(function () {
 
-			$("#fancybox").fancybox({
-				helpers: {
-					title : {
-						type : 'outside'
-					},
-					overlay : {
-						speedOut : 0
-					}
+		$("#fancybox").fancybox({
+			helpers: {
+				title : {
+					type : 'outside'
+				},
+				overlay : {
+					speedOut : 0
 				}
-			});
+			}
+		});
 
-	$("#fancybox-view").fancybox({
+		$("#fancybox-view").fancybox({
+					type : 'iframe',
+					padding : 10,
+					scrolling : 'no',
+					minHeight: '530',
+					width : 565,
+					closeClick : false
+		});
+
+		$("#fancybox-add")
+			.fancybox({
 				type : 'iframe',
 				padding : 10,
 				scrolling : 'no',
-				minHeight: '530',
-				width : 565,
-				closeClick : false
+				autoSize :  true,
+				Height: '600',
+				closeClick : false,
+				closeBtn : false,
+				afterClose : function() {
+					location.reload();
+					return;
+				}
+		});
 	});
-
-	$("#fancybox-add")
-		.fancybox({
-			type : 'iframe',
-			padding : 10,
-			scrolling : 'no',
-			autoSize :  true,
-			Height: '600',
-			closeClick : false,
-			closeBtn : false,
-			afterClose : function() {
-				location.reload();
-				return;
-			}
-	});
-});
 </script>
 
 <style type="text/css">
@@ -143,7 +143,6 @@ $(document).ready(function () {
         height: 5px;
         line-height: 1em;
     }
-
 
 </style>
 <body>
@@ -196,7 +195,16 @@ if (empty($dbCanAdd))$dbCanAdd = 0;
 if (empty($dbCanDelete))$dbCanDelete = 0;
 if (empty($db_WidgetOptions))$db_WidgetOptions = '';
 
-if (empty($strFilter))$strFilter = '';
+
+if (empty($strFilter)){
+$strFilter = '';
+	for ($i=0; $i<=$intFieldCount-1; $i++ ) {
+       $strFilter .= '0';
+    }
+}
+
+
+
 
 if (!empty($db_WidgetOptions )){
 	if (empty($strFilter)){
@@ -264,7 +272,6 @@ if(empty($appTitle))$appTitle = $db_Table;
 <?php
 if ($db_Pager == 1){
 ?>
-
 <div  id="pager" class="pager">
 	<form>
 		<img src="assets/tablesorter-master/addons/pager/icons/first.png" class="first"/>
@@ -298,20 +305,10 @@ if ($db_Pager == 1){
 	<?php
 	for ($i=0; $i<=$intFieldCount-1; $i++ ) {
 		if (substr($strDisplayList,$i,1) == 1 || substr($strDisplayList,$i,1) == 2 || substr($strDisplayList,$i,1) == 4){
-			//check if column has Filter
-			if(!empty($strFilter)){
-				if (substr($strFilter ,$i,1) <> 1){
-					$Filter = "filter-select data-placeholder='Select'";
-				}
-				else
-				{
-					$Filter = "filter-select data-placeholder='Enter Search'";
-				}
-			}
-if (empty($Filter))$Filter = '';
-	?>
-	<th class="sortInitialOrder-asc  <?php echo $Filter ?>"><?php echo $FieldNames[$i] ?></th>
-	<?php
+
+		?>
+			<th><?php echo $FieldNames[$i] ?></th>
+		<?php
 		}
 	}
 	// colspan is not used yet, but  will be in the next version
@@ -333,7 +330,6 @@ if (empty($Filter))$Filter = '';
 	echo "</tr>";
 	echo "</THEAD>";
 	echo "<TBODY>";
-
 	// Print the FieldData
 	foreach ($results as $row) {
 		echo "<tr>";
@@ -351,22 +347,20 @@ if (empty($Filter))$Filter = '';
 						$remove = array('[', ']', '"');
 						$curFieldValue = str_replace($remove, "", $curFieldValue);
 				        $row[$arrFieldNames[$i]] = $curFieldValue;
-
 					}
 				}
-
 				// Check if image
-				if ($arrFieldNames[$i] == $db_ImageFieldName){
-				if ($row[$arrFieldNames[$i]] == '')$row[$arrFieldNames[$i]] = 'includes/images/Pic-NA.png';
-				$curFieldValue = '<td><img id="fancybox" class="img-rounded" src="'.$row[$arrFieldNames[$i]].'" width="50"></td>';
+				if ($arrFieldNames[$i] == $ImageFieldName){
+				if ($row[$arrFieldNames[$i]] == '')$row[$arrFieldNames[$i]] = 'includes/images/not_available_icon.jpg';
+					$curFieldValue = '<td><a id="fancybox" href="' . $row[$arrFieldNames[$i]] . '"><img class="img-rounded" src="' . $row[$arrFieldNames[$i]] . '" alt="" width="40"/></a></td>';
 				}
 				else
 				{
-				$curFieldValue = '<td><a href="#" class-"myeditable" id="'. $arrFieldNames[$i].$row[$arrFieldNames[0]] .'">'.$curFieldValue.'</a></td>';
+					$curFieldValue = '<td><a href="#" class-"myeditable" id="'. $arrFieldNames[$i].$row[$arrFieldNames[0]] .'">'.$curFieldValue.'</a></td>';
 				}
 				//Displays a field as a Child Link if strDisplayList $i = 2
 				if (substr($strDisplayList,$i,1) == 2){
-						$curFieldValue = '<td><a href="#" class="toggle" title="Click to View Child">' . $row[$arrFieldNames[$i]] . '</a></td>';
+					$curFieldValue = '<td><a href="#" class="toggle" title="Click to View Child">' . $row[$arrFieldNames[$i]] . '</a></td>';
 				}
 
 			echo $curFieldValue;
@@ -403,8 +397,6 @@ if (empty($Filter))$Filter = '';
 				?>
 				placement: '<?php echo $placement ?>',
 				<?php
-
-
 				if ($FieldType[$i] == 'combodate'){
 					if (!empty($DateType[$i]) && $DateType[$i] == 'combodate'){
 
@@ -462,30 +454,24 @@ if (empty($Filter))$Filter = '';
 					        weekStart: <?php echo $DateWeekStart[$i] ?>,
 					        <?php
 					        }
-
-
-
 						    if (!empty($DateStartDate[$i])){
 						    ?>
 					        startDate: '<?php echo $DateStartDate[$i] ?>',
 					        <?php
 					        }
-
 						    if (!empty($DateEndDate[$i])){
 						    ?>
 					        endDate: '<?php echo$DateEndDate[$i] ?>',
 					        <?php
 					        }
-
 						    if (!empty($DateWeekDaysDisabled[$i])){
 						    ?>
 					        daysOfWeekDisabled: [<?php echo $DateWeekDaysDisabled[$i] ?>],
 					        <?php
 					        }
-
 						    if (!empty($DateStartView[$i])){
 						    ?>
-					        :startView: [<?php echo $DateStartView[$i] ?>],
+					        startView: <?php echo $DateStartView[$i] ?>,
 					        <?php
 					        }
 					        ?>
@@ -558,24 +544,18 @@ if (empty($Filter))$Filter = '';
 				}
 				?>
 			});
-
-
 			</script>
 			<?php
 			} // End of if cam inline edit
 		} // End if substr $strDisplayList = 1 or 4
 	} // End for intFieldCount
-
-
 		// Get a key value for the VIEW,EDIT and DELETE links
 		$key = $row[$arrFieldNames[0]];
 		if ($dbCanView == 1)echo "<td class='dbviewlink'><a id='fancybox-view' href='db_View.php?id=".$key . "'>".$txtView."</a></td>";
 		if ($dbCanEdit == 1)echo "<td class='dbeditlink'><a id='fancybox-add' href='db_Edit.php?id=".$key . "'>".$txtEdit."</a></td>";
 		if ($dbCanDelete == 1)echo "<td class='dbdeletelink'><a href='db_Delete.php?id=".$key . "'>".$txtDelete."</a></td>";
-
 	    // End of row
 		echo "</tr>";
-
 		if(!empty($db_ChildTemplate)){
 			$strTemplateText = implode( ' ', file($db_ChildTemplate));
 			for ($i=0; $i<=$intFieldCount-1; $i++ ) {
@@ -602,13 +582,12 @@ if (empty($Filter))$Filter = '';
 			if(!empty($ChildRowHeader)){
 				echo '<div><h4>' . $ChildRowHeader . ':</h4></div>';
 			}
-
 			for ($i=0; $i<=$intFieldCount-1; $i++ ) {
 				if (substr($strDisplayList,$i,1) == 3 || substr($strDisplayList,$i,1) == 4){
 					if ($Field_Names[$i] == 'IMGPhoto' && $row[$arrFieldNames[$i]] == '')$row[$arrFieldNames[$i]] = 'includes/images/PicNotAvaliable.png';
 
 					// Check if image
-					if ($arrFieldNames[$i] == $db_ImageFieldName){
+					if ($arrFieldNames[$i] == $ImageFieldName){
 						if ($row[$arrFieldNames[$i]] == '')$row[$arrFieldNames[$i]] = 'includes/images/Pic-NA.png';
 							 $row[$arrFieldNames[$i]]='<img class="displayed" src="'.$row[$arrFieldNames[$i]].'" width="50">';
 					}
@@ -695,7 +674,6 @@ $(function() {
             $(this).width( filter_widths[i] || 0 );
         });
     })
-
 	// hide child rows
 	$('.tablesorter-childRow td').hide();
 
@@ -706,7 +684,6 @@ $(function() {
 		 widgets: ['zebra', <?php echo $db_WidgetOptions ?>],
 		 headerTemplate : '{content} {icon}',
 		 cssChildRow: "tablesorter-childRow",
-
 		 headers: {
 	<?php
 		$x = 0;
@@ -715,9 +692,9 @@ $(function() {
 
 		if (substr($strSortable,$i,1) == 1){$sorter[$i] = 'true';}else{$sorter[$i] = 'false';}
 		if (substr($strFilter,$i,1) == 1){$filter[$i] = 'true';}else{$filter[$i] = 'false';}
-		if (substr($strFilter,$i,1) == 1){$filter[$i] = 'true';}else{$filter[$i] = 'false';}
+		if (substr($strResizable,$i,1) == 1){$resize[$i] = 'true';}else{$resize[$i] = 'false';}
 		?>
-		<?php echo $x ?>: { sorter: <?php echo $sorter[$i]?>, filter: <?php echo $filter[$i]?>, filter: <?php echo $filter[$i]?> },
+		<?php echo $x ?>: { sorter: <?php echo $sorter[$i]?>, filter: <?php echo $filter[$i]?>, resizable: <?php echo $resize[$i]?> },
 		<?php
 		$x++;
 		} // End $strDisplayList
@@ -743,7 +720,6 @@ $(function() {
 		} //End canDelete
 		?>
 		}, // End headers
-
 		widgetOptions : {
 			<?php
 			if(!empty($db_HideFilter)){
@@ -789,11 +765,8 @@ $(function() {
 				<?php
 				} // End if!empty $strFilterSelect
 				?>
-
 		} // End widgetOptions
  	}) // End tablesorter
-
-
 	.tablesorterPager({
 		size:<?php echo $db_PageSize ?>,
 		page: <?php echo $db_StartPage ?>,
@@ -801,24 +774,19 @@ $(function() {
 		positionFixed: false,
 		fixedHeight: true
 	}) // End tablesorterPager
-
 	.bind('pagerChange', function(){
 		// hide child rows after pager update
 		$('.tablesorter-childRow td').hide();
 	}); // End bind
-
 	$('.tablesorter').delegate('.toggle', 'click' ,function(){
 		// use "nextUntil" to toggle multiple child rows
 		// toggle table cells instead of the row
 		$(this).closest('tr').nextUntil('tr:not(.tablesorter-childRow)').find('td').toggle();
 		return false;
 	});  // End  $_tablesorter
-
-
 	$('button').click(function(){
 	    $('table').trigger('sortReset');
  	});
-
 }); // End Of This Function
 </script>
 </body>

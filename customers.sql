@@ -52,18 +52,18 @@ CREATE TABLE IF NOT EXISTS `customers` (
 -- Dumping data for table a1-sales.customers: 12 rows
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
 INSERT INTO `customers` (`Cust_id`, `CompanyName`, `ContactFirstName`, `ContactLastName`, `Address1`, `Address2`, `City`, `State`, `zip`, `Phone`, `Email`, `Password`, `SalesRep`, `DateEntered`, `Memo`, `CreditLimit`, `PriceLevel`, `FavorateColor`, `Status`, `IMGPhoto`, `Languages`, `Date`, `Time`, `Year`, `DateTime`, `TimeStamp`, `Notes`) VALUES
-	(1, 'A1-SALES', 'Joe', 'gains', '3923 JACKSON', '', 'MEMPHIS', 'TN', '38128', '901 279-9350', 'cspeerly@gmail.com', NULL, '2', '2012-12-18', NULL, 1000, 'LEVEL-1', '24FF1C', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(2, 'C-SALES', 'BOB', 'LINDER', '12875 COUNTY ROAD 42', '', 'TYLER', 'TX', '75704', '', '', NULL, '1', '2012-11-02', NULL, 1000, 'LEVEL-1', '', 'ACTIVE', 'uploads/admin16.jpg', NULL, '2013-02-22', NULL, NULL, NULL, NULL, NULL),
-	(7, 'F-KIDS', 'JOSH', 'CARTERUGHT', '', '', 'WEST MEMPHIS', 'AR', '', '', '', NULL, '1', '2012-11-20', NULL, 1000, 'LEVEL-1', '33FF1C', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(3, 'B-SALES', 'STEVE', 'COCKRAN', '2nd atreet', '', 'MORTON', 'IL', '61550', '', 'sn@mail.com', NULL, '2', '2012-11-14', NULL, 1000, 'LEVEL-1', 'CC3366', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(4, 'D-SALES', 'LARRY', 'BLACK', '', '', 'WASHINGTON', 'IL', '61571', '', '', NULL, '1', '2012-11-28', NULL, 1000, 'LEVEL-1', 'FF1C77', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(5, 'E-SALES', 'DON', 'TRUMP', '', '', 'DUNLAP', 'TN', '38128', '', '', NULL, '1', '2012-11-14', NULL, 1000, 'LEVEL-1', 'FF4314', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(6, 'F-SALES', 'WANDA', 'TILLEY', '3923 JACKSON', '', 'MEMPHIS', 'TN', '38128', '', '', NULL, '1', '2012-11-28', NULL, 1000, 'LEVEL-1', NULL, 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(8, 'F-KIDS', 'CHAD', 'SNIDER', '', '', '', 'CHINA', '', '', '', NULL, '1', '2012-11-06', NULL, 1000, 'LEVEL-1', '00B3FF', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(9, 'f-SALES', 'randy', 'SMITH', '3923 JACKSON', '', 'MEMPHIS', 'TN', '38018', '', '', NULL, '1', '2012-11-28', NULL, 1000, 'LEVEL-1', NULL, 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(10, 'F-SALES', 'JENNIFER', 'FIBBLEY', '', '', 'CORDOVA', 'TN', '38118', '', '', NULL, '1', '2012-11-28', NULL, 1000, 'LEVEL-1', NULL, 'ACTIVE', 'uploads/4-3.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(11, 'A3-SALES', 'GARY', 'PARBISKI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2013-01-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(12, 'A2-SALES', 'KELLY', 'HASTY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2013-02-22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	(1, 'A1-SALES', 'Joe', 'gains', '3923 JACKSON', '', 'MEMPHIS', 'TN', '38128', '901 279-9350', 'cspeerly@gmail.com', NULL, '2', '2012-12-18', NULL, 1000, 'LEVEL-1', 'a:1:{i:0;s:4:"Blue";}', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(2, 'C-SALES', 'BOB', 'LINDER', '456 COUNTY ROAD 69', '', 'Dalas', 'TX', '75704', '', '', NULL, '1', '2012-11-02', NULL, 1000, '2', 'a:1:{i:0;s:5:"White";}', 'ACTIVE', 'uploads/admin16.jpg', 'a:3:{i:0;s:4:"ajax";i:1;s:4:"html";i:2;s:3:"css";}', '2013-02-22', NULL, NULL, NULL, NULL, NULL),
+	(7, 'F-KIDS', 'JOSH', 'CARTERUGHT', '', '', 'WEST MEMPHIS', 'AR', '', '', '', NULL, '1', '2012-11-20', NULL, 1000, 'LEVEL-1', 'a:1:{i:0;s:6:"Yellow";}', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(3, 'B-SALES', 'STEVE', 'COCKRAN', '2nd atreet', '', 'MORTON', 'IL', '61550', '', 'sn@mail.com', NULL, '2', '2012-11-14', NULL, 1000, 'LEVEL-1', 'a:1:{i:0;s:5:"Green";}', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(4, 'D-SALES', 'LARRY', 'BLACK', '', '', 'WASHINGTON', 'IL', '61571', '', '', NULL, '1', '2012-11-28', NULL, 1000, 'LEVEL-1', 'a:1:{i:0;s:5:"White";}', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(5, 'E-SALES', 'DON', 'TRUMP', '', '', 'DUNLAP', 'TN', '38128', '', '', NULL, '1', '2012-11-14', NULL, 1000, 'LEVEL-1', 'a:2:{i:0;s:4:"Blue";i:1;s:3:"Red";}', 'ACTIVE', NULL, 'a:1:{i:0;s:3:"php";}', NULL, NULL, NULL, NULL, NULL, NULL),
+	(6, 'F-SALES', 'WANDA', 'TILLEY', '3923 JACKSON', '', 'MEMPHIS', 'TN', '38128', '', '', NULL, '1', '2012-11-28', NULL, 1000, 'LEVEL-1', 'a:1:{i:0;s:3:"Red";}', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(8, 'F-KIDS', 'CHAD', 'SNIDER', '', '', '', 'CA', '', '', '', NULL, '1', '2012-11-06', NULL, 1000, 'LEVEL-1', 'a:1:{i:0;s:3:"Red";}', 'ACTIVE', NULL, 'a:1:{i:0;s:3:"asp";}', NULL, NULL, NULL, NULL, NULL, NULL),
+	(9, 'f-SALES', 'randy', 'SMITH', '3923 JACKSON', '', 'MEMPHIS', 'TN', '38018', '', '', NULL, '1', '2012-11-28', NULL, 1000, 'LEVEL-1', 'a:1:{i:0;s:4:"Blue";}', 'ACTIVE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(10, 'F-SALES', 'JENNIFER', 'FIBBLEY', '', '', 'CORDOVA', 'TN', '38118', '', '', NULL, '1', '2012-11-28', NULL, 1000, 'LEVEL-1', 'a:1:{i:0;s:5:"Green";}', 'ACTIVE', 'uploads/4-3.jpg', 'a:3:{i:0;s:4:"html";i:1;s:3:"css";i:2;s:4:"ajax";}', NULL, NULL, NULL, NULL, NULL, NULL),
+	(11, 'A3-SALES', 'GARY', 'PARBISKI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2013-01-12', NULL, NULL, '3', 'a:1:{i:0;s:6:"Yellow";}', NULL, NULL, 'a:2:{i:0;s:3:"css";i:1;s:4:"ajax";}', NULL, NULL, NULL, NULL, NULL, NULL),
+	(12, 'A2-SALES', 'KELLY', 'HASTY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2013-02-22', NULL, NULL, '2', 'a:1:{i:0;s:3:"Red";}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

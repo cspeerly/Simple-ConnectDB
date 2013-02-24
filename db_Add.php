@@ -267,7 +267,7 @@ $('#<?php echo $columns[$i]?>').editable({
 
 						    if (!empty($DateStartView[$i])){
 						    ?>
-					        :startView: [<?php echo $DateStartView[$i] ?>],
+					        startView: <?php echo $DateStartView[$i] ?>,
 					        <?php
 					        }
 					        ?>

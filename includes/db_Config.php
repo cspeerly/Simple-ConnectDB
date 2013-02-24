@@ -26,7 +26,7 @@ $appTheme = 'blue';  // blue,green,bootstrap,dropbox,dark,ice,black-ice,default,
 $db_WidgetOptions = "'filter','resizable'";
 
 // Defined Field Names
-$strFieldNames  = "ID,COMPANY,FIRSTNAME,LASTNAME,ADDRESS1,ADDRESS2,CITY,STATE,ZIP,PHONE,EMAIL,PASSWORD,SALESREP,ENTERED,MEMO,LIMIT,LEVEL,COLOR,STATUS,IMGPhoto,Languages,Date,Time,Year,DateTime,TimeStamp,Notes";
+$strFieldNames  = "ID,COMPANY,FIRSTNAME,LASTNAME,ADDRESS1,ADDRESS2,CITY,STATE,ZIP,PHONE,EMAIL,PASSWORD,SALESREP,ENTERED,MEMO,LIMIT,LEVEL,COLOR,STATUS,Photo,Languages,Date,Time,Year,DateTime,TimeStamp,Notes";
 
 // Field Types
 // defines the field type in db_edit.php and db_add.php
@@ -71,14 +71,14 @@ $dbCanDelete = 1;
 // 3 = Show on Child Row only
 // 4 = Show on Table List and Child Row
 //                       012345678901234567890123456
-$strDisplayList =       "214430333330343330030111110";
+$strDisplayList =       "214430333330343341041000000";
 
 // Display View
 $strDisplayView  =      "111111111111111111111111111";
 
 // Display VIEW/EDIT
 //                       012345678901234567890123456
-$strDisplayViewEdit =   "322222222222221222222222222";
+$strDisplayViewEdit =   "322222222222222222222222222";
 
 // Display ADD
 $strDisplayAdd =        "022222222222222222222222222";
@@ -86,21 +86,22 @@ $strDisplayAdd =        "022222222222222222222222222";
 // Inline Edit
 // 0=no edit, 1=popup edit and 2=inline edit
 //                       012345678901234567890123456
-$strDisplayInlineEdit = "011112222222212222222122112";
+$strDisplayInlineEdit = "011112222222212222222222222";
 $strPopupPlacement    = "011200000000020000033200330";
-
-//Sortable
-$strSortable =          "111101111000110111100111110";
-
-// Resizable
-$strResizable =         "100101111001001000001111110";
 
 //Required
 $strRequired =          "011100000000000000000000000";
 
+//Sortable
+$strSortable =          "111111111110010011001000000";
+
+// Resizable
+$strResizable =         "011111111111111111111111111";
+
 //Filter
-$strFilter =            "111100000000000100100111110";
-$strFilterSelect =      "011100000000000100100111110";
+$strFilter =            "011100000000010011001000000";
+$strFilterSelect =      "011100000000010010000000000";
+
 $db_HideFilter = 'true';
 
 // Pager
@@ -141,7 +142,7 @@ $arrSelect[18] = "{'': 'Select', 'Active': 'Active', 'Non-Active': 'Non-Active',
 $arrSelect[7] = "[{value: 'AL', text: 'Alabama'},{value: 'AK', text: 'Alaska'},{value: 'AZ', text: 'Arizona'},{value: 'AR', text: 'Arkansas'},{value: 'CA', text: 'California'},{value: 'CO', text: 'Colorado'},{value: 'CT', text: 'Connecticut'},{value: 'DE', text: 'Delaware'},{value: 'FL', text: 'Florida'},{value: 'GA', text: 'Georgia'},{value: 'HI', text: 'Hawaii'},{value: 'ID', text: 'Idaho'},{value: 'IL', text: 'Illinois'},{value: 'IN', text: 'Indiana'},{value: 'IA', text: 'Iowa'},{value: 'KA', text: 'Kansas'},{value: 'KT', text: 'Kentucky'},{value: 'LO', text: 'Louisiana'},{value: 'ME', text: 'Maine'},{value: 'MD', text: 'Maryland'},{value: 'MA', text: 'Massachusetts'},{value: 'MI', text: 'Michigan'},{value: 'MN', text: 'Minnesota'},{value: 'MS', text: 'Mississippi'},{value: 'MO', text: 'Missouri'},{value: 'MT', text: 'Montana'},{value: 'NE', text: 'Nebraska'},{value: 'NV', text: 'Nevada'},{value: 'NH', text: 'New Hampshire'},{value: 'NJ', text: 'New Jersey'},{value: 'NM', text: 'New Mexico'},{value: 'NY', text: 'New York'},{value: 'ND', text: 'North Dakota'},{value: 'NC', text: 'North Carolina'},{value: 'OH', text: 'Ohio'},{value: 'OK', text: 'Oklahoma'},{value: 'OR', text: 'Oregon'},{value: 'PA', text: 'Pennsylvania'},{value: 'RI', text: 'Rhode Island'},{value: 'SC', text: 'South Carolina'},{value: 'SD', text: 'South Dakota'},{value: 'TN', text: 'Tennessee'},{value: 'TX', text: 'Texas'},{value: 'UT', text: 'Utah'},{value: 'VT', text: 'Vermont'},{value: 'VA', text: 'Virginia'},{value: 'WA', text: 'Washington'},{value: 'WV', text: 'West Virginia'},{value: 'WI', text: 'Wisconsin'},{value: 'WY', text: 'Wyoming'}]";
 
 // Groups
-$arrSelectgroups[8] = "includes/groups/groups-tn.php";
+$arrSelectgroups[8] = "includes/groups/Zips-tn.php";
 
 // Select2
 
@@ -155,12 +156,8 @@ $arrSelect2[20] = "['html', 'javascript', 'css', 'ajax', 'php', 'asp', 'c++']";
 //$AutoTokenSeparators2[20] = '[",", " "]';
 $CustomMatcher2[20] = 'yes';
 
-$TextareaRows[2] = 2;
-
-$ImageUpload[19] = "uploads/";
-
 // Show Field as a image
-$db_ImageFieldName = "IMGPhoto";
+$ImageFieldName = "IMGPhoto";
 
 // COMBODATE FIELD TYPE
 $DateType[13] = "combodate";
@@ -174,11 +171,11 @@ $ComboDateMaxYear[13] = '2015';
 // DATE FIELD TYPE
 $DateType[21] = "date";
 $DateFormat[21] = "yyyy-mm-dd";
-$DateWeekStart[21] = 0;
-$DateStartDate[21] = '2013-01-01';
-$DateEndDate[21] = '2015-12-31';
-$DateWeekDaysDisabled[21] = '0,6';
-$DateStartView[21] = 0;
+//$DateWeekStart[21] = 0;
+//$DateStartDate[21] = '2013-01-01';
+//$DateEndDate[21] = '2015-12-31';
+//$DateWeekDaysDisabled[21] = '0,6';
+$DateStartView[21] = 2;
 
 // COMBODATE TIME ONLY
 $DateType[22] = "combodate";
