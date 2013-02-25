@@ -13,6 +13,7 @@
     <link href="assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/prettify/prettify.css" rel="stylesheet">
+    <link href="assets/prettify/prettify-bootstrap.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -48,7 +49,10 @@
                 <a href="#examples">Examples</a>
               </li>
               <li class="">
-                <a href="#contact">Contact</a>
+                <a href="#themes">Themes</a>
+              </li>
+              <li class="">
+                <a href="#contact">Contacts</a>
               </li>
               <li class="">
                 <a href="#what-next">Whats Next</a>
@@ -71,6 +75,7 @@
           <li><a href="#installation"><i class="icon-chevron-right"></i> Installation</a></li>
           <li><a href="#documentation"><i class="icon-chevron-right"></i> Documentation</a></li>
           <li><a href="#examples"><i class="icon-chevron-right"></i> Examples</a></li>
+          <li><a href="#themes"><i class="icon-chevron-right"></i> Themes</a></li>
           <li><a href="#contact"><i class="icon-chevron-right"></i> Contact</a></li>
           <li><a href="#what-next"><i class="icon-chevron-right"></i> What next?</a></li>
         </ul>
@@ -83,11 +88,12 @@
         <section id="contents">
          <div class="page-header">
             <h2><span type="button" class="btn btn-large btn-primary disabled">1</span> Simple-ConnectDB</h2>
-          </div>
+         	<p>Version 1.0.0</p>
+         </div>
           <p class="lead">It's simple the way SIMPLE should be</a>.</p>
 		  <p> Simple-ConnectDB is a quick and simple way to put any basic mySql database on line.</p>
 		  <p> Simply edit the pre made db_Config.php template with your settings</p>
-		  <p> For a basic database, about 2 minutes and Whow! it's on line<p>
+		  <p> For a basic database, about 5 minutes and Whow! it's on line<p>
           <p>All that is needed to put it online are these five(5) lines</p>
           <pre class="prettyprint">
 		  $db_user = &acute;root&acute;;
@@ -97,7 +103,7 @@
 		  $db_port = &acute;3307&acute;; //optional
 		  </pre>
 		  <p>This will display all Records, all Fields and a View link to view that Record<p>
-          <p>I built this application using Bootstrap, Xpeditable, TableSorter and fancybox along with meekroDB for the mySQL connection. (still needed is meekroDB implemented on the add new record, I had to use the old mySql connection type until I can figure this out.</p>
+          <p>I built this application using Bootstrap, Xpeditable, TableSorter and fancybox along with meekroDB for the mySQL connection. (still needed is meekroDB implemented on the add new record, I had to use the old mySQL connection type until I can figure this out.</p>
 		  <p>Please see their web sites for the license and rights for your use.</p>
           <h3>Here are some of the additional Options you can activate</h3>
           <p>This is only a strat of the options included</p>
@@ -168,18 +174,76 @@
        		 <div class="page-header">
          	  <h2><span type="button" class="btn btn-large btn-primary disabled">3</span>  Installation</h2>
          	 </div>
-           <h4>Note: the mySQL database must already be created.  You do need to know the structure of the database. For the Field Type such as text, textarea, blog, date etc. for the additional settings</h4>
-            <p>It's Real SIMPLE</p>
-			<p>1) Unzip the Simple-ConnectDB Zip to a place where you can do a little editting.</p>
-			<p>2) Locate the db_Config.php in the includes folder.</p>
-			<p>3) Using a good text editor (I recommend <a href="http://www.sublimetext.com/2">Sublime Text 2</a>)</p>
-			<p>Edit the db_Config.php with your settings.<p>
-			<p>See the documentation on how to set them.</p>
-			<p>4) Save the db_Config.php back to the orginal place you got it.</p>
-			<p>5) Upload the complete folder Simple-ConnectDB to the root of your web site.
-			<p>You may rename this folder to what ever suits you. Just keep the file structure in it as is.</p>
-			<p>6) Open browswr and goto http://Localhost/Simple-ConnectDB</p>
+
+
+		<h4>SIMPLE</h4>
+        <ul class="nav nav-tabs" id="text-tabs">
+		<li class="active"><a href="#text-settings3" data-toggle="tab">Quick Setup</a></li>
+		<li><a href="#text-group3" data-toggle="tab">Using your database</a></li>
+		</ul>
+		<div class="tab-content">
+		<div class="tab-pane offset1 active"  id="text-settings3">
+		<h4>QUICK SETUP</h4>
+		<h5>1) Download the Simple-ConnectDB application.</h5>
+		<h5>2) UnZip it to a working folder on your harddrive.</h5>
+		<h5>3) Run The customers.sql file located in the root of the application.</h5>
+		<h5>&nbsp;&nbsp;&nbsp;&nbsp;It will creat a database named A1-Sales and a table named customers</h5>
+		<h5>&nbsp;&nbsp;&nbsp;&nbsp;with some example data.</h5>
+		<h5>4) Open the config.php located in the includes folder with a good text editor.</h5>
+		<h5>&nbsp;&nbsp;&nbsp;&nbsp;Set the user name, password and port # to your mySQL server.</h5>
+		<h5>&nbsp;&nbsp;&nbsp;&nbsp;Then save it back to the same location.</h5>
+		<pre class="prettyprint">
+		// Database Connection
+		$db_user = 'user';
+		$db_password = 'password';
+		$db_Name = 'a1-sales';
+		$db_Table = 'customers';
+		$db_port = '3307';   // Change to match the port # for your mySQL
+		</pre>
+		<h5>5) Open the MySQLConnect.php located in the root folder with a good text editor.</h5>
+		<h5>&nbsp;&nbsp;&nbsp;&nbsp;Set the user name, password and port # to your mySQL server.</h5>
+		<h5>&nbsp;&nbsp;&nbsp;&nbsp;Then save it back to the same location</h5>
+		<h5>&nbsp;&nbsp;&nbsp;&nbsp;Once I figure out the adding a new record throught meekroDB this will go away.</h5>
+		<pre class="prettyprint">
+		define('DB_SERVER', 'localhost:3307');
+		define('DB_USER', 'user');
+		define('DB_PASS', 'password');
+		define('DB_NAME', 'a1-sales');
+		define('DB_TABLE', 'customers');
+		</pre>
+		<h5>6) Upload the complete Simple-ConnectDB folder to the root of your web./h5>
+		<h5>7) Browse to http://localhost/Simple-ConnectDB/index.php</h5>
+		<h5>&nbsp;&nbsp;&nbsp;&nbsp;If all is correct the example application will appear in your browser.</h5>
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+		<div class="tab-pane offset1" id="text-group3">
+		<h4> USING YOUR DATABASE</h4>
+
+
+		</div>
+		</div>
+
        </section>
+
+
+
+
+
+
+
+
+
+
 
         <!-- Documentation
         ================================================== -->
@@ -187,17 +251,19 @@
           <div class="page-header">
             <h2><span type="button" class="btn btn-large btn-primary disabled">4</span> Documentation</h2>
           </div>
-		 <h4>The db_Config.php</h4>
-		 <p>GO THROUGH EACH SETTING BEFORE YOU START.</p>
-		 <p>THIS WAY YOU WILL KNOW HOW TO SET EACH SETTING WITH THE OTHER SETTINGS</p>
-		 <p>Note: If a setting is not used, then it is best to comment out with //</p>
+		<h4>The db_Config.php</h4>
+		<p>GO THROUGH EACH SETTING BEFORE YOU START.</p>
+		<p>THIS WAY YOU WILL KNOW HOW TO SET EACH SETTING WITH THE OTHER SETTINGS</p>
+		<p>When the setting says OPTIONAL it is not required in the config.</p>
+		<p>However, if it has an * in front of it like this (*OPTIONAL).</p>
+		<p>Then it is required for the settings listed below it marked with a bullet like this <span class="badge badge-warning">1-1</span> or <span class="badge badge-info">1-1</span></p>
 		<h4><span class="badge badge-info">1</span> Connectiong to Database (REQUIRED)</h4>
 		<p>This is the only Required settings to display your project</p>
 
 		<pre class="prettyprint">
 		// Set the mySql connection
-		$db_user = &acute;root&acute;;
-		$db_password = &acute;muffin&acute;;
+		$db_user = &acute;user&acute;;
+		$db_password = &acute;password&acute;;
 		$db_Name = &acute;a1-sales&acute;;
 		$db_Table = &acute;customers&acute;;
 		$db_port = &acute;3307&acute;;  // optional(only to connect other than port 3306
@@ -230,7 +296,7 @@
 		$db_Where = &acute;LastName=%s,Jones&acute;;
 		</pre>
 
-		<h4><span class="badge badge-info">6</span> Sets the Default Order by in the SQL(OPTIONAL)</h4>
+		<h4><span class="badge badge-info">6</span> Sets the Default Order by in the SQL (OPTIONAL)</h4>
 		<p>See $db_ColumnSort in the next setting</p>
 		<pre class="prettyprint">
 		$db_OrderBy = &quot;CompanyName&quot;;
@@ -280,8 +346,9 @@
 		</pre>
 
 		<h4><span class="badge badge-info">13</span> Set the Field Types (OPTIONAL)</h4>
-		<p>REQUIRED FOR Inline Edit, Edit Record and Adding New Records</p>
-		<p>Ones with four ****&acute;s require $arrSelect settings below</p>
+		<p>REQUIRED FOR Inline Edit, Edit Record and Adding New Records.</p>
+		<p>If not set than all fields are considered text fields.</p>
+		<p>The ones with four ****&acute;s require $arrSelect or $arrSelect2 settings explained below.</p>
 		<p>     text. 		<br>
 				textarea,	<br>
 				email, 		validation only<br>
@@ -295,16 +362,16 @@
 				checklist, 	****<br>
 				typeahead, 	****<br>
 				wysihtml5.	<br>
-				select2,    <br>
+				select2,    ****<br>
 		</p>
 		<pre class="prettyprint">
 		$strFieldType  	= &acute;text,select,text,typeahead,email,checklist,date,wysihtml5&acute;;
 		</pre>
         </section>
 
-		<h4><span class="badge badge-info">14</span> Define Select options for adding and editting records</h4>
+		<h4><span class="badge badge-info">14</span> Define the Select options for adding and editting records</h4>
 		<p>The field must be set to select in $strFieldType (above)</p>
-		<p>make sure you define $arrSelect as an array</p>
+		<p>Make sure you define $arrSelect as an array</p>
 		<pre class="prettyprint">
 		$arrSelect = array();
         // Then set these to the fields you need them on
@@ -322,7 +389,7 @@
 
 	    OR
 
-	    $arrSelectgroups[8] = &quot;includes/groups/groups.php&quot;;
+	    $arrSelectgroups[8] = &quot;includes/groups/groups.php&quot;; //see setting groups below
 		</pre>
 
 		<h4><span class="badge badge-info">16</span> Define group Options for adding and editting records</h4>
@@ -340,7 +407,7 @@
 		<div class="tab-pane offset1" id="text-group">
 		<p>Name this file to match the group file name set in the group settings</p>
 		<p>Save this file in the includes/groups folder</p>
-		<p> Script outputs data in json format suitable for &acute;source&acute; option in X-editable</p>
+		<p> Script outputs data in json format, suitable for &acute;source&acute; option in X-editable</p>
 		<pre class="prettyprint">
 		&lt;?php
 		sleep(1);
@@ -365,21 +432,21 @@
 		</div>
 		<h4><span class="badge badge-info">17</span> Define Select2 Options for adding and editting records(OPTIONAL)</h4>
         <ul class="nav nav-tabs" id="text-tabs">
-		<li class="active"><a href="#text-settings3" data-toggle="tab">Settings</a></li>
-		<li><a href="#text-group3" data-toggle="tab">Additional Settings</a></li>
+		<li class="active"><a href="#text-settings4" data-toggle="tab">Settings</a></li>
+		<li><a href="#text-group4" data-toggle="tab">Additional Settings</a></li>
 		</ul>
 		<div class="tab-content">
-		<div class="tab-pane active" id="text-settings3">
+		<div class="tab-pane active" id="text-settings4">
 		<p>The # between the [] is the field number</p>
-		<p>User can also enter his own tag as well as from the list</p>
-		<p>Just Type in the input box and then select that tag</p>
+		<p>This settinf allows you to just Type in the input box and then select that tag</p>
 		<pre class="prettyprint">
 		$arrSelect2[20] = "[&acute;html&acute;, &acute;javascript&acute;, &acute;css&acute;, &acute;ajax&acute;]";
+		<p>User can also enter his own tag as well as from the list</p>
 		OR
 		$arrSelect2[20] = &acute;[{id: &quot;EN&quot;, text: &quot;EN&quot;}, {id: &quot;RU&quot;, text: &quot;RU&quot;}, {id: &quot;GB&quot;, text: &quot;GB&quot;}]&acute;;
 		</pre>
 		</div>
-		<div class="tab-pane offset1" id="text-group3">
+		<div class="tab-pane offset1" id="text-group4">
 		<h4><span class="badge badge-success">17-1</span> MaxSelection2 in Select2 (OPTIONAL)</h4>
 		<p>Limits the number of Selection you can have</p>
 		<p><The example set only 2 selections can be entered</p>
@@ -415,14 +482,14 @@
 
 		</div>
 		</div>
-	    <h4><span class="badge badge-info">18</span> Show icons for VIEW,EDIT,DELETE on db_List.php (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">18</span> Show icons for VIEW,EDIT,DELETE (OPTIONAL)</h4>
 	    <p>defaults to 1 to show as Text</p>
 	    <p>0 = Text. 1 = Buttons</p>
   		<pre class="prettyprint">
 		$dbButtons = 1;
 		</pre>
 
-	    <h4><span class="badge badge-info">19</span> Set if can View Record from db_List.php (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">19</span> Set if can View Records (OPTIONAL)</h4>
 	    <p>Defaults to 1 to show link</p>
 	    <p>1 = Alows and shows a link on the right side of the row.</p>
   		<p>0 = Hide the link and don't allow View Record</p>
@@ -430,7 +497,7 @@
 		$dbCanView =
 		</pre>
 
-	    <h4><span class="badge badge-info">20</span> Set if can Edit Record from db_List.php (Optional)</h4>
+	    <h4><span class="badge badge-info">20</span> Set if can Edit Records (Optional)</h4>
 	    <p>Defaults to 0 - Can Not Edit Record</p>
 	    <p>Required if you want to edit the record</p>
 	    <p>1 = Alows and shows a link on the right side of the row.</p>
@@ -440,7 +507,7 @@
 		$dbCanEdit = 1;
 		</pre>
 
-	    <h4><span class="badge badge-info">21</span> Set if can Add Record from db_List.php (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">21</span> Set if can Add Records (OPTIONAL)</h4>
 	    <p>Defaults to 0 - Can Not Add New Record</p>
 	    <p>1 = Alows and shows a link on the right side of Pager</p>
   		<p>0 = Hide the link and don't allow Add Record</p>
@@ -448,7 +515,7 @@
 		$dbCanAdd = 1;
 		</pre>
 
-	    <h4><span class="badge badge-info">22</span> Set if can Delete Record from db_List.php (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">22</span> Set if can Delete Records (OPTIONAL)</h4>
 	    <p>Defaults to 0 - Can Not Delete Record</p>
 	    <p>1 = Alows and shows a link on the right side of the row.</p>
   		<p>0 = Hide the link and don't allow Delete Record</p>
@@ -465,15 +532,7 @@
 		$db_ImageFieldName = &quot;IMGPhoto&quot;;
 		</pre>
 
-	    <h4><span class="badge badge-info">24</span> Set if can Add Record from db_List.php (OPTIONAL)</h4>
-	    <p>If noy set then the link to Add New Record is disabled</p>
-	    <p>1 = Alows and shows a link on the right side of Pager</p>
-  		<p>0 = Hide the link and don't allow Add Record</p>
-  		<pre class="prettyprint">
-		$dbCanAdd = 1;
-		</pre>
-
-	    <h4><span class="badge badge-info">25</span> Set the Fields to Display for LIST and Child Rows (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">24</span> Set the Fields to Display for LIST and Child Rows (OPTIONAL)</h4>
 	    <p>Default is 1 - Must be set if usinf Inline Edit or Child Rows</p>
 	    <p>Note: If $strDisplayList NOT SET IN CONFIG all records will show</p>
 		<p>If Using a Child Row refer to $db_ChildTemplate and $ChildRowHeader</p>
@@ -495,7 +554,7 @@
 		$strDisplayList = &quot;244430333310000000013&quot
 		</pre>
 
-	    <h4><span class="badge badge-info">26</span> Set the Fields to View when Viewing a Record (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">25</span> Set the Fields to View when Viewing a Record (OPTIONAL)</h4>
 	    <p>Defaults to 1 - All Fileds Show in View</p>
 	    <p>This allows you to hide certain Fields for security etc.</p>
 	    <p>0 = No Show</p>
@@ -504,7 +563,7 @@
 		$strDisplayView  = &quot;01111110001011111111&quot;;
 		</pre>
 
-	    <h4><span class="badge badge-info">27</span> Set the Fields to view and edit (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">26</span> Set the Fields to view and edit (OPTIONAL)</h4>
 	    <p>This allows you to hide certain Fields for security etc.</p>
 	    <p>Defaults to 1 - All Fields are set as a popup</p>
 	    <p>0 = No Show</p>
@@ -515,7 +574,7 @@
 		$strDisplayViewEdit = &quot;02112222221221222222&quot;
 		</pre>
 
-	    <h4><span class="badge badge-info">28</span> Set the Fields allowed for Inline Edit (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">27</span> Set the Fields allowed for Inline Edit (OPTIONAL)</h4>
   		<p>Defaults to 1 as a popup</p>
   		<p>0 = Field is not editable</p>
   		<p>1 = Field is Editable with a popup edit</p>
@@ -524,7 +583,7 @@
 		$strDisplayViewEdit = &quot;02112222221221222222&quot;
 		</pre>
 
-	    <h4><span class="badge badge-info">29</span> Set the Fields that will show when adding a new record (OPTIONAL)</h5>
+	    <h4><span class="badge badge-info">28</span> Set the Fields that will show when adding a new record (OPTIONAL)</h5>
 	    <p>Defaults to 1 as a popup<p>
 	    <p>$dbCanEdit = 1; must be enabled for the add link to show</p>
 	    <p>0 = Field is not editable and will not show</p>
@@ -534,7 +593,7 @@
 		$strDisplayAdd = &quot;02112222222122122222&quot;ot;
 		</pre>
 
-	    <h4><span class="badge badge-info">30</span> Set Field to be Required when Adding/Editting (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">29</span> Set Field to be Required when Adding/Editting (OPTIONAL)</h4>
 	    <p>$dbCanEdit = 1; must be enabled for this feature</p>
   		<p>It will Display a red * by the Field Name when Adding a new record</p>
 	    <p>0 = Field is not Required</p>
@@ -543,7 +602,7 @@
 		$strRequired = &quot;01110000000000000000&quot;;
 		</pre>
 
-	    <h4><span class="badge badge-info">31</span> Set the Columns that are Sortable (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">30</span> Set the Columns that are Sortable (OPTIONAL)</h4>
 	    <p>Defaults to No Sort on any Column</p>
 	   	<p>0 = Field is not Sortable</p>
   		<p>1 = Field is Sortable</p>
@@ -551,7 +610,7 @@
 		$strSortable = &quot;11110011100011011110&quot;;0000&quot;;
 		</pre>
 
-	    <h4><span class="badge badge-info">32</span> Set the Columns that are Resizable (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">31</span> Set the Columns that are Resizable (OPTIONAL)</h4>
 	    <p>Defaults to No Resize of Columns</p>
 	   	<p>0 = Field is not Resizable</p>
   		<p>1 = Field is Resizable</p>
@@ -559,7 +618,7 @@
 		$strResizable = &quot;11110011100100100000&quot;;
 		</pre>
 
-	    <h4><span class="badge badge-info">33</span> Set the Columns Filter (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">32</span> Set the Columns Filter (OPTIONAL)</h4>
 	    <p>Defaults to No Filter</p>
 	   	<p>0 = Field has no Filter</p>
   		<p>1 = Field has Filter</p>
@@ -567,7 +626,7 @@
 		$strFilter = &quot;01110000000000010010&quot;;
 		</pre>
 
-	    <h4><span class="badge badge-info">34</span> Set the Columns Filter to always show or hide (OPTIONAL) </h4>
+	    <h4><span class="badge badge-info">33</span> Set the Columns Filter to always show or hide (OPTIONAL) </h4>
 	    <p>Defaults to false</p>
 	    <p>true = Filter will hide until mouse is over it</p>
   		<p>false = Filters always shows</p>
@@ -575,7 +634,7 @@
 		$db_HideFilter = &acute;true&acute;;
 		</pre>
 
-	    <h4><span class="badge badge-info">35</span> Set the option for filter to TEXT FIELD or SELECT (OPTIONAL)</h4>
+	    <h4><span class="badge badge-info">34</span> Set the option for filter to TEXT FIELD or SELECT (OPTIONAL)</h4>
 	    <p>Defaults to TEXT</p>
 	   	<p>0 = Filter will be a input text box</p>
   		<p>1 = Filter will be a select box (values for the select option bome from the data in that column</p>
@@ -583,7 +642,7 @@
 		$strFilterSelect = &quot;01110000000000010010&quot;;
 		</pre>
 
-		<h4><span class="badge badge-info">36</span> Using a Child Row Template  (OPTIONAL)</h4>
+		<h4><span class="badge badge-info">35</span> Using a Child Row Template  (OPTIONAL)</h4>
 		<p<Defaults to no Template</p>
             <ul class="nav nav-tabs" id="text-tabs">
 			<li class="active"><a href="#text-settings1" data-toggle="tab">Settings</a></li>
@@ -644,7 +703,6 @@
 		<p>you will find /* Child Row CSS */ at the bottom of the db_Styles.css</p>
 		<p>It already has the class wrapper in it</p>
 		<p>Note: This Template is only an example, however it is used in the demo </p>
-
 		<pre class="prettyprint">
 		/* Child Row CSS */
 		.wrapper{
@@ -659,15 +717,15 @@
 		</pre>
 		</div>
 		</div>
-		<h4><span class="badge badge-info">37</span> Set the Child Row Header (OPTIONAL)</h4>
+		<h4><span class="badge badge-info">36</span> Set the Child Row Header (OPTIONAL)</h4>
 		<p>This sets the header text for the child row</p>
 		<p>Not used with the Child-Tenplate</p>
 		<pre class="prettyprint">
 		$ChildRowHeader = &quot;SHIP TO&quot;;
 		</pre>
 
-		<h4><span class="badge badge-info">38</span> PopupPlacement (OPTIONAL)
-		<p>Sets the popup location for the popup when editting</h4>
+		<h4><span class="badge badge-info">37</span> PopupPlacement (OPTIONAL)</h4>
+		<p>Sets the popup location for the popup when editting</p>
 		<p>The field must be set to popup for this feature</p>
 		<p>0 = top</p>
 		<p>1 = right</p>
@@ -677,19 +735,265 @@
 		$strPopupPlacement    = "012330000000000000003";
 		</pre>
 
-		<h5>END OF Documentation</h5>
+		<h4><span class="badge badge-info">38</span> Textarea number of rows (OPTIONAL)</h4>
+		<p>Sets the the number of rows to show in a textarea field</p>
+		<p>The default is 5 rows</p>
+		<p>The [26] is the field numnber</p>
+		<p>The 7 = seven rows</p>
+		<pre class="prettyprint">
+		$TextareaRows[26] = 7;
+		</pre>
+
+		<h4><span class="badge badge-info">39</span> Defines date and comdodate fields (OPTIONAL)</h4>
+        <p>You can have muliple date and combodate fields</p>
+        <ul class="nav nav-tabs" id="text-tabs">
+		<li class="active"><a href="#text-date" data-toggle="tab">Datepicker</a></li>
+		<li><a href="#text-combodate" data-toggle="tab">Combodates</a></li>
+		</ul>
+		<div class="tab-content">
+		<div class="tab-pane offset1 active" id="text-date">
+		<h4>DATEPICKER</h4>
+		<p>The date field type in the mySQL database must be set to date</p>
+		<p>NOTE: Fornat for datepicker and combodate are different</p>
+		<p>Refer to <a herf="http://vitalets.github.com/bootstrap-datepicker">http://vitalets.github.com/bootstrap-datepicker</a> for the datepicker format options.</p>
+		<p>ONLY THE SETTINGS LISTED HERE ARE USABLE IN Simple-Connectdb</p>
+		<h4><span class="badge badge-warning">39-1</span> Defines the Date Function (*OPTIONAL)</h4>
+		<p>Field-Type must = date</p>
+		<p>Tell it what field is the Date Field</p>
+		<p>The [21] says its field number twenty-one(21)
+		<pre class="prettyprint">
+		$DateType[21] = &quot;date&quot;;
+		</pre>
+		<h4><span class="badge badge-warning">39-2</span> Date Format (OPTIONAL)</h4>
+		<p>format for when saving the date field</p>
+		<pre class="prettyprint">
+		$DateFormat[21] = &quot;yyyy-mm-dd&quot;;
+		</pre>
+		<h4><span class="badge badge-warning">39-3</span> Day of week to start on (OPTIONAL)</h4>
+		<p>Day of week datepicker starts on</p
+		<p>0 = Sunday, 6 = Saturday</p>
+		<pre class="prettyprint">
+		$DateWeekStart[21] = 0;
+		</pre>
+		<h4><span class="badge badge-warning">39-4</span> Date Calander starts on (OPTIONAL)</h4>
+		<pre class="prettyprint">
+		$DateStartDate[21] = &quot;2013-01-01&quot;;
+		</pre>
+		<h4><span class="badge badge-warning">39-5</span> Date Calander ends on (OPTIONAL)</h4>
+		<pre class="prettyprint">
+		$DateEndDate[21] = &quot;2015-12-31&quot;;
+		</pre>
+		<h4><span class="badge badge-warning">39-6</span> Day Disabled in the calendar (OPTIONAL)</h4>
+		<p>This example disables any date on Sunday and Saturday</p>
+		<pre class="prettyprint">
+		$DateWeekDaysDisabled[21] = &quot;0,6&quot;;
+		</pre>
+		<h4><span class="badge badge-warning">39-7</span> Start View of Datepicker (OPTIONAL)</h4>
+		<p>0 = Calendar(default), 1 = Month then calendar and 2 = year then month then calendar</p>
+		<p>This example would show the year then the month then the complete calendar to select day</p>
+		<pre class="prettyprint">
+		$DateStartView[21] = 2;
+		</pre>
+		</div>
+		<div class="tab-pane offset1" id="text-combodate">
+		<h4>COMBODATES</h4>
+		<p>Listed are 5 examples for the 5 mySQL date types</p>
+		<p>The date field in the mySQL database must be set to the correct date type</p>
+		<p>NOTE: Fornat for datepicker and combodate are different</p>
+		<p>Refer to <a herf="http://vitalets.github.com/combodate/#docs">http://vitalets.github.com/combodate/#docs</a> for the combodate format options.</p>
+		<p>ONLY THE SETTINGS LISTED HERE ARE USABLE IN Simple-Connectdb</p>
+		<h4><span class="badge badge-success">40-1</span> combodate date (OPTIONAL)</h4>
+		<h5>COMBODATE DATE ONLY</h5>
+		<pre class="prettyprint">
+		// COMBODATE DATE ONLY
+		$DateType[13] = "combodate";
+		$DateFormat[13] = "YYYY-MM-DD";
+		$ComboDateTemplate[24] = "YYYY/MMMM/DD";
+		$ComboDateMinYear[24] = '2010';
+		$ComboDateMaxYear[24] = '2015';
+		</pre>
+		<h4><span class="badge badge-success">39-2</span> combodate time (OPTIONAL)</h4>
+		<h5>COMBODATE TIME ONLY</h5>
+		<pre class="prettyprint">
+		// COMBODATE TIME ONLY
+		$DateType[22] = "combodate";
+		$DateFormat[22] = "HH:mm";
+		$ComboDateTemplate[22] = "hh:mm a";
+		$ComboTimeMinuteStep[22] = 15;
+		</pre>
+		<h4><span class="badge badge-success">39-3</span> combodate year (OPTIONAL)</h4>
+		<h5>COMBODATE YEAR ONLY</h5>
+		<pre class="prettyprint">
+		// COMBODATE YEAR ONLY
+		$DateType[23] = "combodate";
+		$DateFormat[23] = "YYYY";
+		$ComboDateTemplate[23] = "YYYY";
+		$ComboDateMinYear[23] = '2010';
+		$ComboDateMaxYear[23] = '2015';
+		</pre>
+		<h4><span class="badge badge-success">39-4</span> combodate datetime (OPTIONAL)</h4>
+		<h5>COMBODATE DATETIME</h5>
+		<pre class="prettyprint">
+		// COMBODATE DATETIME
+		$DateType[24] = "combodate";
+		$DateFormat[24] = "YYYY-MM-DD HH:mm";
+		$ComboDateTemplate[24] = "YYYY/MMMM/DD hh:mm a";
+		$ComboDateMinYear[24] = '2010';
+		$ComboDateMaxYear[24] = '2015';
+		$ComboTimeMinuteStep[24] = 15;
+		</pre>
+		<h4><span class="badge badge-success">39-5</span> combodate timestamp(OPTIONAL)</h4>
+		<h5>COMBODATE TIMESTAMP</h5>
+		<pre class="prettyprint">
+		// COMBODATE TIMESTAMP
+		$DateType[25] = "combodate";
+		$DateFormat[25] = "YYYY-MM-DD HH:mm";
+		$ComboDateTemplate[25] = "YYYY/MMMM/DD hh:mm a";
+		$ComboDateMinYear[25] = '2010';
+		$ComboDateMaxYear[25] = '2015';
+		$ComboTimeMinuteStep[25] = 15;
+		</pre>
+		</div>
+		</div>
+    	<h5>END OF Documentation</h5>
 		<p>Will add more as time goes on</p>
 
 		<!-- Examples
 		================================================== -->
 	    <section id="examples">
-		 <div class="page-header">
-		 <h2><span type="button" class="btn btn-large btn-primary disabled">5</span>  Example</h2>
-		 </div>
-		 <div>
-		 <p class="text-warning">!!! Comming Soon !!!</p>
-		 </div>
-	   </section>
+     	<div class="page-header">
+		<h2>Example Images</h2>
+		</div>
+        <ul class="nav nav-tabs" id="text-tabs">
+		<li class="active"><a href="#text-main" data-toggle="tab">MainView</a></li>
+		<li><a href="#text-inline" data-toggle="tab">InlineEdit</a></li>
+		<li><a href="#text-child" data-toggle="tab">ChildRows</a></li>
+		<li><a href="#text-add" data-toggle="tab">AddRecord</a></li>
+		<li><a href="#text-edit" data-toggle="tab">EditRecord</a></li>
+		<li><a href="#text-view" data-toggle="tab">ViewRecord</a></li>
+		</ul>
+
+        <div class="tab-content">
+		<div class="tab-pane active" id="text-main">
+		<p>List View</p>
+		<p><img src="images/examples/main.png"></p>
+		</div>
+
+		<div class="tab-pane" id="text-inline">
+		<p>Inline Edit</p>
+		<p><img src="images/examples/MainInlineEdit.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-child">
+		<p>With Child Row</p>
+		<p><img src="images/examples/MainWithChildRow.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-add">
+		<p>Add Record</p>
+		<p><img src="images/examples/Add.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-edit">
+		<p>Edit Record</p>
+		<p><img src="images/examples/Edit.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-view">
+		<p>View Record</p>
+		<p><img src="images/examples/View.PNG"></p>
+		</div>
+
+		</div>
+	    </section>
+
+		<!-- Themes
+		================================================== -->
+	    <section id="themes">
+     	<div class="page-header">
+		<h2>Theme Images</h2>
+		</div>
+        <ul class="nav nav-tabs" id="text-tabs">
+		<li class="active"><a href="#text-blue" data-toggle="tab">blue</a></li>
+		<li><a href="#text-green" data-toggle="tab">green</a></li>
+		<li><a href="#text-bootstrap" data-toggle="tab">bootstrap</a></li>
+		<li><a href="#text-dropbox" data-toggle="tab">dropbox</a></li>
+		<li><a href="#text-dark" data-toggle="tab">dark</a></li>
+		<li><a href="#text-ice" data-toggle="tab">ice</a></li>
+		<li><a href="#text-black-ice" data-toggle="tab">black-ice</a></li>
+		<li><a href="#text-default" data-toggle="tab">default</a></li>
+		<li><a href="#text-grey" data-toggle="tab">grey</a></li>
+		</ul>
+
+        <div class="tab-content">
+
+		<div class="tab-pane active" id="text-blue">
+		<h4>blue</h4>
+		<p><img src="images/themes/blue.png"></p>
+		</div>
+
+		<div class="tab-pane" id="text-green">
+		<h4>green</h4>
+		<p><img src="images/themes/green.png"></p>
+		</div>
+
+		<div class="tab-pane" id="text-bootstrap">
+		<h4>bootstrap</h4>
+		<p><img src="images/themes/bootstrap.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-dropbox">
+		<h4>dropbox</h4>
+		<p><img src="images/themes/dropbox.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-dark">
+		<h4>dark</h4>
+		<p><img src="images/themes/dark.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-ice">
+		<h4>ice</h4>
+		<p><img src="images/themes/ice.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-black-ice">
+		<h4>black-ice</h4>
+		<p><img src="images/themes/black-ice.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-default">
+		<h4>default</h4>
+		<p><img src="images/themes/default.PNG"></p>
+		</div>
+
+		<div class="tab-pane" id="text-grey">
+		<h4>grey</h4>
+		<p><img src="images/themes/grey.PNG"></p>
+		</div>
+
+
+
+
+
+		</div>
+	    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- CONTACT
         ================================================== -->
@@ -707,7 +1011,7 @@
             <h2><span type="button" class="btn btn-large btn-primary disabled">7</span> What's next?</h2>
           </div>
           <p class="lead">Update and Customize Simple-ConnectDB project with your own features.</p>
-		  <p>Then send them to Simple-ConnectDB@gmail.com  attn: UPDATES</p>
+		  <p class="text-warning">Post Updates and your enhancements at <a href="https://github.com/cspeerly/Simple-ConnectDB">Simple-ConnectDB</a></p>
 		  <p>We will look at them and if all meets the needs. We will add it and show credit to you for a great addon</p>
 		</section>
       </div>
