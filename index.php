@@ -174,7 +174,14 @@ if (empty($strDisplayViewEdit)){
 if (empty($strSortable)){
 $strSortable = '';
 	for ($i=0; $i<=$intFieldCount-1; $i++ ) {
-       $strSortable .= '0';
+       $strSortable .= '1';
+    }
+}
+
+if (empty($strResizable)){
+$strResizable = '';
+	for ($i=0; $i<=$intFieldCount-1; $i++ ) {
+       $strResizable .= '0';
     }
 }
 
@@ -186,15 +193,13 @@ $strRequired = '';
 }
 
 if (empty($db_PageSize))$db_PageSize = '';
-
 if (empty($db_Pager))$db_Pager = 1;
-
 if (empty($dbCanView))$dbCanView = 1;
 if (empty($dbCanEdit))$dbCanEdit = 0;
 if (empty($dbCanAdd))$dbCanAdd = 0;
 if (empty($dbCanDelete))$dbCanDelete = 0;
 if (empty($db_WidgetOptions))$db_WidgetOptions = '';
-
+if (empty($ImageFieldName))$ImageFieldName = '';
 
 if (empty($strFilter)){
 $strFilter = '';
@@ -203,14 +208,12 @@ $strFilter = '';
     }
 }
 
-
-
-
 if (!empty($db_WidgetOptions )){
 	if (empty($strFilter)){
 		$db_WidgetOptions = str_replace("'filter',","", $db_WidgetOptions);
 	}
 }
+
 if (empty($strFilterSelect)){
 $strFilterSelect = '';
 	for ($i=0; $i<=$intFieldCount-1; $i++ ) {
@@ -352,7 +355,7 @@ if ($db_Pager == 1){
 				// Check if image
 				if ($arrFieldNames[$i] == $ImageFieldName){
 				if ($row[$arrFieldNames[$i]] == '')$row[$arrFieldNames[$i]] = 'includes/images/not_available_icon.jpg';
-					$curFieldValue = '<td><a id="fancybox" href="' . $row[$arrFieldNames[$i]] . '"><img class="img-rounded" src="' . $row[$arrFieldNames[$i]] . '" alt="" width="40"/></a></td>';
+					$curFieldValue = '<td><a id="fancybox" href="' . $row[$arrFieldNames[$i]] . '"><img class="img-rounded" src="' . $row[$arrFieldNames[$i]] . '" alt="" width="10px"></a></td>';
 				}
 				else
 				{
