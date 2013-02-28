@@ -355,7 +355,7 @@ if ($db_Pager == 1){
 				// Check if image
 				if ($arrFieldNames[$i] == $ImageFieldName){
 				if ($row[$arrFieldNames[$i]] == '')$row[$arrFieldNames[$i]] = 'includes/images/not_available_icon.jpg';
-					$curFieldValue = '<td><a id="fancybox" href="' . $row[$arrFieldNames[$i]] . '"><img class="img-rounded" src="' . $row[$arrFieldNames[$i]] . '" alt="" width="10px"></a></td>';
+					$curFieldValue = '<td><a id="fancybox" href="' . $row[$arrFieldNames[$i]] . '"><img class="img-rounded" src="' . $row[$arrFieldNames[$i]] . '" alt="" width="30px"></a></td>';
 				}
 				else
 				{
