@@ -19,7 +19,7 @@ $db_port = '3307';   // Change to match the port # for your mySQL
 $appTitle = 'Customers';
 
 // Theme
-$appTheme = 'blue';  // blue,green,bootstrap,dropbox,dark,ice,black-ice,default,grey
+$appTheme = 'blue';   // blue,green,bootstrap,dropbox,dark,ice,black-ice,default,grey
 
 // Widgets
 // options = filter, columns, resizable
