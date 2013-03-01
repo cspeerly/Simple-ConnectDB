@@ -1,6 +1,6 @@
 /* pager wrapper, div */
 .tablesorter-pager {
-	padding: 5px;
+	padding: 1px;
 }
 /* pager wrapper, in thead/tfoot */
 td.tablesorter-pager {
@@ -24,7 +24,7 @@ td.tablesorter-pager {
 
 /* pager element reset (needed for bootstrap) */
 .tablesorter-pager select {
-	margin: 5;
+	margin-top: 9px;
 	padding: 0;
 	height:1.5em;
 	width: 50px;

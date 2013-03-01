@@ -19,7 +19,7 @@ $db_port = '3307';   // Change to match the port # for your mySQL
 $appTitle = 'Customers';
 
 // Theme
-$appTheme = 'blue';  // blue,green,bootstrap,dropbox,dark,ice,black-ice,default,grey
+$appTheme = 'green';  // blue,green,bootstrap,dropbox,dark,ice,black-ice,default,grey
 
 // Widgets
 // options = filter, columns, resizable
@@ -105,8 +105,8 @@ $strFilterSelect =      "011100000000010010000000000";
 $db_HideFilter = 'true';
 
 // Pager
-// 0 = NO Pager, 1 = Display on Top, 2 = Bottom
-$db_Pager = 0;
+// 0 = NO Pager, 1 = Display on Top, 2 = Bottom, 3 = both
+$db_Pager = 3;
 $db_PageSelector = "5,10,15,20,50,100,ALL";
 $db_PageSize = 5;
 $db_StartPage = 0;

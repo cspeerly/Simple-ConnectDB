@@ -40,7 +40,7 @@ require_once 'includes/db_Functions.php';
 	<link href="assets/x-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
 	<script src="assets/x-editable/bootstrap-editable/js/bootstrap-editable.js"></script>
 
-<!-- css bootstrap pager-->
+<!-- css tablesorter pager-->
 	<link rel="stylesheet" type="text/css" href="assets/tablesorter-master/addons/pager/jquery.tablesorter.pager.css">
 
 <!-- select2 -->
@@ -108,8 +108,8 @@ require_once 'includes/db_Functions.php';
 .main {
 	float:left;
 	border: <?php echo $cssTheme ?> 0px solid;
-	padding: 5px 3px 5px 3px ;
-	margin: 5px 3px 1px 10px ;
+	padding: 3px 6px 3px 6px ;
+	margin: 3px 5px 3px 5px ;
 	border-radius: .5em;
 	-moz-border-radius: .5em;
 	-webkit-border-radius: .5em;
@@ -118,18 +118,19 @@ require_once 'includes/db_Functions.php';
 }
 .contents{
 	border: <?php echo $cssTheme ?> 0px solid;
-	padding: 5px 5px 5px 5px ;
-	margin: 2px 3px 5px 3px ;
+	padding: 0 0 0 0 ;
+	margin: 0 0 0 0 ;
 	border-radius: .5em;
 	-moz-border-radius: .5em;
 	-webkit-border-radius: .5em;
-	background: #cdcdcd;
+	background: <?php echo $cssTheme ?>;
 	min-width:400px;
 }
+
 .title {
-	border: #cdcdcd 6px solid;
-	padding: 5px -15px 5px 5px ;
-	margin: 5px 10px 5px 10px ;
+	border: #cdcdcd 4px solid;
+	padding: 0 0 0 0 ;
+	margin: 2px 2px 2px 2px ;
 	border-radius: .4em;
 	-moz-border-radius: .4em;
 	-webkit-border-radius: .4em;
@@ -140,9 +141,21 @@ require_once 'includes/db_Functions.php';
 }
 
 .pager {
-        height: 5px;
-        line-height: 1em;
-    }
+	border: #cdcdcd 0px solid;
+	padding: 0px 0px 0px 0px ;
+	margin: 0px 0px 0px 0px ;
+}
+.menu {
+	border: #cdcdcd 0px solid;
+	padding: 3px 0 0 5px ;
+}
+
+.tablesorter {
+	border: #000000 0px solid;
+	padding: 3px 3px 3px 3px ;
+}
+
+
 
 </style>
 <body>
@@ -272,16 +285,30 @@ if(empty($appTitle))$appTitle = $db_Table;
 	<div  class="title">
 	<?php echo $appTitle ?>
 	</div> <!-- END div Title -->
-<?php
-if ($db_Pager == 1){
+<div class ="menu">
+	<?php
+
+		if ($dbCanAdd == 1)  echo "<a id='fancybox-add' class='btn btn-mini' type='button' href='db_Add.php'> ".$txtAddNew."</a>";
 ?>
-<div  id="pager" class="pager">
-	<form>
-		<img src="assets/tablesorter-master/addons/pager/icons/first.png" class="first"/>
-		<img src="assets/tablesorter-master/addons/pager/icons/prev.png" class="prev"/>
-		<input type="text" class="pagedisplay"/>
-		<img src="assets/tablesorter-master/addons/pager/icons/next.png" class="next"/>
-		<img src="assets/tablesorter-master/addons/pager/icons/last.png" class="last"/>
+</div>
+<?php
+
+
+
+
+
+
+
+
+	if(!empty($db_Pager) && $db_Pager == 1 || $db_Pager == 3){
+	?>
+	<div class="pager">
+		Page: <select class="gotoPage"></select>
+		<img src="assets/tablesorter-master/addons/pager/icons/first.png" class="first" alt="First" title="First page" />
+		<img src="assets/tablesorter-master/addons/pager/icons/prev.png" class="prev" alt="Prev" title="Previous page" />
+		<span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+		<img src="assets/tablesorter-master/addons/pager/icons/next.png" class="next" alt="Next" title="Next page" />
+		<img src="assets/tablesorter-master/addons/pager/icons/last.png" class="last" alt="Last" title= "Last page" />
 		<select class="pagesize">
 		<?php
 		for ($i=0; $i<=$SelectCount-1; $i++ ) {
@@ -293,16 +320,13 @@ if ($db_Pager == 1){
 		?>
 		</select>
 		Page: <select class="gotoPage"></select>
-		<?php
-		if ($dbCanAdd == 1)  echo "<a id='fancybox-add' class='btn btn-mini' type='button' href='db_Add.php'> ".$txtAddNew."</a>";
-		?>
-	</form>
-</div>
-<?php
-} // end if Pager on Top
-?>
+	</div>
+	<?php
+	} // End if db_Pager
+	?>
 <div class="contents">
-	<table id="user" class="tablesorter">
+
+	<table id="user" class="tablesorter table-bordered">
 	<THEAD>
 	<tr>
 	<?php
@@ -371,7 +395,7 @@ if ($db_Pager == 1){
 			// if can inline edit then attach it to the field to edit
 			if (substr($strDisplayInlineEdit,$i,1) == 1 || substr($strDisplayInlineEdit,$i,1) == 2){
 			?>
-			<script>
+		<script>
 			<?php
 			if (substr($strDisplayInlineEdit,$i,1) == 1)$mode = 'popup';
 			if (substr($strDisplayInlineEdit,$i,1) == 2)$mode = 'inline';
@@ -612,16 +636,16 @@ if ($db_Pager == 1){
 	</TBODY>
 	</table>
 </div> <!-- END CONTENTS -->
-<?php
-if ($db_Pager == 2){
-?>
-<div  id="pager" class="pager">
-	<form>
-		<img src="assets/tablesorter-master/addons/pager/icons/first.png" class="first"/>
-		<img src="assets/tablesorter-master/addons/pager/icons/prev.png" class="prev"/>
-		<input type="text" class="pagedisplay"/>
-		<img src="assets/tablesorter-master/addons/pager/icons/next.png" class="next"/>
-		<img src="assets/tablesorter-master/addons/pager/icons/last.png" class="last"/>
+	<?php
+	if(!empty($db_Pager) && $db_Pager == 2 || $db_Pager == 3){
+	?>
+	<div class="pager">
+		Page: <select class="gotoPage"></select>
+		<img src="assets/tablesorter-master/addons/pager/icons/first.png" class="first" alt="First" title="First page" />
+		<img src="assets/tablesorter-master/addons/pager/icons/prev.png" class="prev" alt="Prev" title="Previous page" />
+		<span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+		<img src="assets/tablesorter-master/addons/pager/icons/next.png" class="next" alt="Next" title="Next page" />
+		<img src="assets/tablesorter-master/addons/pager/icons/last.png" class="last" alt="Last" title= "Last page" />
 		<select class="pagesize">
 		<?php
 		for ($i=0; $i<=$SelectCount-1; $i++ ) {
@@ -633,18 +657,41 @@ if ($db_Pager == 2){
 		?>
 		</select>
 		Page: <select class="gotoPage"></select>
-		<?php
-		if ($dbCanAdd == 1)  echo "<td class='dbeditlink'><a id='fancybox-add' href='db_Add.php'> ".$txtAddNew."</a></td>";
-		?>
-	</form>
-</div>
-<?php
-} // End if Pager on BOTTOM
-?>
+	</div>
+	<?php
+	} // End if db_Pager
+	?>
+
 </div> <!-- END MAIN -->
 <!-- ************ TableSorter Script ************************************** -->
 <script type="text/javascript">
 $(function() {
+
+	// define pager options
+	var pagerOptions = {
+		container: $(".pager"),
+		// output string - default is '{page}/{totalPages}'; possible variables: {page}, {totalPages}, {startRow}, {endRow} and {totalRows}
+		output: '{startRow} - {endRow} / {filteredRows} ({totalRows})',
+		// if true, the table will remain the same height no matter how many records are displayed. The space is made up by an empty
+		// table row set to a height to compensate; default is false
+		fixedHeight: true,
+		// remove rows from the table to speed up the sort of large tables.
+		// setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+		removeRows: false,
+		// go to page selector - select dropdown that sets the current page
+		cssGoto:	 '.gotoPage'
+	};
+
+
+
+
+
+
+
+
+
+
+
     $('.myeditable').editable({
 		 url: 'post.php',
 		 mode: 'inline'
@@ -770,17 +817,6 @@ $(function() {
 				?>
 		} // End widgetOptions
  	}) // End tablesorter
-	.tablesorterPager({
-		size:<?php echo $db_PageSize ?>,
-		page: <?php echo $db_StartPage ?>,
-		container: $("#pager"),
-		positionFixed: false,
-		fixedHeight: true
-	}) // End tablesorterPager
-	.bind('pagerChange', function(){
-		// hide child rows after pager update
-		$('.tablesorter-childRow td').hide();
-	}); // End bind
 	$('.tablesorter').delegate('.toggle', 'click' ,function(){
 		// use "nextUntil" to toggle multiple child rows
 		// toggle table cells instead of the row
@@ -790,6 +826,14 @@ $(function() {
 	$('button').click(function(){
 	    $('table').trigger('sortReset');
  	});
+
+ // initialize the pager plugin
+  $("table").tablesorterPager(pagerOptions);
+
+
+
+
+
 }); // End Of This Function
 </script>
 </body>
