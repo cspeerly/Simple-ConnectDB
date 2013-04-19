@@ -108,6 +108,8 @@ $db_HideFilter = 'true';
 // 0 = NO Pager, 1 = Display on Top, 2 = Bottom, 3 = both
 $db_Pager = 3;
 $db_PageSelector = "5,10,15,20,50,100,ALL";
+
+// Set the Page Size - must match a value in db_PageSelector 
 $db_PageSize = 5;
 $db_StartPage = 0;
 
