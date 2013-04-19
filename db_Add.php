@@ -35,9 +35,9 @@ require_once 'includes/db_Functions.php';
 <script src="assets/bootstrap/js/bootstrap.js"></script>
 
 <!-- bootstrap modal-->
-<link href="assets/model/css/bootstrap-modal.css" rel="stylesheet">
-<script src="assets/model/js/bootstrap-modalmanager.js"></script>
-<script src="assets/model/js/bootstrap-modal.js"></script>
+<link href="assets/Model/css/bootstrap-modal.css" rel="stylesheet">
+<script src="assets/Model/js/bootstrap-modalmanager.js"></script>
+<script src="assets/Model/js/bootstrap-modal.js"></script>
 
 <!-- x-editable (bootstrap) -->
 <link href="assets/x-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
