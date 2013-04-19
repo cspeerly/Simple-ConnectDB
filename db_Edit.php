@@ -26,8 +26,8 @@ $strDisplayViewEdit = '';
 	<script type='text/javascript' src='assets/jquery/jquery-migrate-1.1.1.js'></script>
 
 <!-- fancyBox -->
-	<link rel="stylesheet" type="text/css" href="assets/fancybox/source/jquery.fancybox.css?v=2.1.4" media="screen" />
-	<script type="text/javascript" src="assets/fancybox/source/jquery.fancybox.js?v=2.1.4"></script>
+	<link rel="stylesheet" type="text/css" href="assets/fancyBox/source/jquery.fancybox.css?v=2.1.4" media="screen" />
+	<script type="text/javascript" src="assets/fancyBox/source/jquery.fancybox.js?v=2.1.4"></script>
 
 <!-- momentjs -->
 	<script src="assets/momentjs/moment.min.js"></script>
@@ -38,9 +38,9 @@ $strDisplayViewEdit = '';
 	<script src="assets/bootstrap/js/bootstrap.js"></script>
 
 <!-- bootstrap modal-->
-	<link href="assets/model/css/bootstrap-modal.css" rel="stylesheet">
-	<script src="assets/model/js/bootstrap-modalmanager.js"></script>
-	<script src="assets/model/js/bootstrap-modal.js"></script>
+	<link href="assets/Model/css/bootstrap-modal.css" rel="stylesheet">
+	<script src="assets/Model/js/bootstrap-modalmanager.js"></script>
+	<script src="assets/Model/js/bootstrap-modal.js"></script>
 
 <!-- x-editable (bootstrap) -->
 	<link href="assets/x-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
