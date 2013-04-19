@@ -315,7 +315,9 @@ if(empty($appTitle))$appTitle = $db_Table;
 			 $UseValue = $arrPageSelect[$i];
 			 $ShowValue = $arrPageSelect[$i];
 			 if ($ShowValue == 'ALL')$UseValue = '2000';
-			 echo '<option value="'. $UseValue .'">'. $ShowValue .'</option>';
+			 echo '<option value="'. $UseValue.'"';
+			 if ($db_PageSize == $UseValue)echo(' selected="selected" ');
+			 echo '>' . $ShowValue . '</option>'; 
 		}
 		?>
 		</select>
